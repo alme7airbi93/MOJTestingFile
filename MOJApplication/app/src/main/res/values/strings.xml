@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Smart Cort</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_registration">Registration</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="title_section_home">Home</string>
+    <string name="title_section_location">\tLocation</string>
+    <string name="title_section_logout">\t\tLogout</string>
+    <string name="title_section_login">\t\tSign in</string>
+    <string name="title_section_about_us_activity">\t\tAbout Us</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string-array name="sections_icons">
+        <item>@android:drawable/ic_delete</item>
+        <item>@drawable/googlemap</item>
+        <item>@drawable/drawericnloginfix</item>
+
+
+    </string-array>
+    <string-array name="sections_icons_out">
+        <item>@android:drawable/ic_delete</item>
+        <item>@drawable/googlemap</item>
+        <item>@drawable/drawericonlogout</item>
+
+
+    </string-array>
+    <string name="title_activity_about_us">About Us</string>
+</resources>

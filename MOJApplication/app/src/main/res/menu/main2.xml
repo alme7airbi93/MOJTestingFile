@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.mohammad.mojapplication.Main2Activity">
+    <item android:id="@+id/action_bar_title"
+        android:title="Ministry of Justice\t\t\t\t\t\t\t\t\t\t"
+        app:showAsAction="withText|ifRoom"
+        />
+
+
+</menu>

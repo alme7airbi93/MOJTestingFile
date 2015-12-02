@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="emirates">
+        <item>Abu Dhabi</item>
+        <item>Dubai</item>
+        <item>Sharjah</item>
+        <item>Ajman</item>
+        <item>Umm Al Quwain</item>
+        <item>Ras AlKhaimah</item>
+        <item>Al Fujairah</item>
+    </array>
+
+    <array name="NType">
+        <item>legal</item>
+        <item>financial</item>
+        <item>stock</item>
+        <item>vehicle</item>
+    </array>
+
+
+    <array name="PType">
+        <item>legal</item>
+        <item>financial</item>
+        <item>stock</item>
+        <item>vehicle</item>
+    </array>
+    <array name="idDoc">
+        <item>Driver Lisence</item>
+        <item>Passport</item>
+        <item>Health Card</item>
+        <item>No</item>
+    </array>
+
+
+
+</resources>

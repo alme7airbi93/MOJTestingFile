@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/step1fragment"
+    android:background="@drawable/registers">
+
+    <LinearLayout
+        android:layout_marginTop="135dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:orientation="vertical">
+        <TextView
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Enter Emirates ID:"
+            android:id="@+id/tvID"
+            android:textSize="32dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+             />
+
+        <EditText
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:inputType="number"
+            android:id="@+id/etNID"
+            android:layout_below="@+id/tvID"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp" />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:id="@+id/btnNextID"
+            android:layout_below="@id/etNID"
+            />
+    </LinearLayout>
+
+
+</RelativeLayout>

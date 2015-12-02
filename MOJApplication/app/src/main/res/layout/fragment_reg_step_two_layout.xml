@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/registers"
+    android:layout_height="match_parent"
+    android:id="@+id/step2fragment">
+<LinearLayout
+    android:layout_marginTop="135dp"
+    android:layout_marginRight="30dp"
+    android:layout_marginLeft="30dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Enter SMS Code :"
+        android:id="@+id/tvSMS"
+        android:textSize="32dp"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <EditText
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/etSMS"
+        android:layout_below="@id/tvSMS"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:id="@+id/btnNextSMS"
+        android:layout_below="@id/etSMS"
+        />
+
+</LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@drawable/registers"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_marginTop="135dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Enter a pin code :"
+            android:id="@+id/tvUser"
+            android:textSize="32dp"
+            />
+
+        <EditText
+            android:layout_marginTop="10dp"
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/etTransPass"
+            android:layout_below="@+id/tvUser"
+            android:inputType="numberPassword"/>
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Finish"
+            android:id="@+id/btnFinish" />
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

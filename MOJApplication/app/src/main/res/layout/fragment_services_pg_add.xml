@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:text="Add"
+        android:id="@+id/btnAddtolist"
+
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Adding Party"
+        android:id="@+id/textView6" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rbgParty"
+        android:layout_below="@id/textView6"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="By National ID Card"
+            android:id="@+id/rbID"
+            android:checked="true" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manually"
+
+            android:id="@+id/rbMan"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:checked="false" />
+
+    </RadioGroup>
+
+    <ScrollView
+        android:layout_below="@id/rbgParty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/svMan" >
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Party Type:"
+                android:id="@+id/textView227" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spPartyTypeMan"
+                android:entries="@array/PType"
+                android:spinnerMode="dialog" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Identification Document"
+                android:id="@+id/textView12" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spidDoc"
+                android:entries="@array/idDoc"
+                android:spinnerMode="dialog" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Browse..."
+                    android:id="@+id/btnPicMan"
+                    android:layout_alignBottom="@+id/linearLayout3"
+                    android:layout_toRightOf="@+id/linearLayout3"
+                    android:layout_toEndOf="@+id/linearLayout3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text=""
+                    android:id="@+id/tvPicMan"
+                    android:layout_below="@+id/linearLayout3"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Name:"
+                android:id="@+id/tvnameaddparty" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etNameAddPartyMan" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Mobile:"
+                android:id="@+id/textView15" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/etMobileAddPartyMan" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Address:"
+                android:id="@+id/textView16" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etAddressAddPartyMan"
+                android:hint="(e.g Abu Dhabi, defence Road)"
+                android:inputType="textMultiLine" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_below="@id/rbgParty"
+        android:id="@+id/loAddById"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Party Type:"
+            android:id="@+id/textView7" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spPartyType"
+            android:entries="@array/PType"
+            android:spinnerMode="dialog" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Enter ID Card:"
+            android:id="@+id/textView8" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etNidCardAddParty" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Picture of National ID:"
+            android:id="@+id/tvBackPic" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Browse..."
+                android:id="@+id/btnPic"
+                android:layout_alignBottom="@+id/linearLayout3"
+                android:layout_toRightOf="@+id/linearLayout3"
+                android:layout_toEndOf="@+id/linearLayout3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text=""
+                android:id="@+id/tvPic"
+                android:layout_below="@+id/linearLayout3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

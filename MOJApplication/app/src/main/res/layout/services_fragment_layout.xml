@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#21000000"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+
+        android:background="#006600">
+        <TextView
+            android:textColor="#FFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Services"
+            android:textSize="26dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#21000000"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:id="@+id/btnNotary"
+                android:background="@drawable/notarys"
+                android:layout_height="115dp"
+                />
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:id="@+id/btnVerdict"
+                android:background="@drawable/verdicts"
+                android:layout_height="115dp"
+                />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:id="@+id/btnCourts"
+                android:background="@drawable/courts"
+                android:layout_height="125dp"
+                />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:id="@+id/btnTranslator"
+                android:background="@drawable/service4"
+                android:layout_height="125dp"
+                />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

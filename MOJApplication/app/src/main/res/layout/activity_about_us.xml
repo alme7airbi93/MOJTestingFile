@@ -1,0 +1,90 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mohammad.mojapplication.AboutUsActivity">
+    <LinearLayout
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/uaelogo"/>
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:textColor="#A47B00"
+            android:textSize="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ministry of Justice \nIT Department\nHCT Students"/>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Vision"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Leadership in achieving justice"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mission "
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Commitment to provide a fair judicial system through effective legislation to ensure the rule of law and the protection of rights and freedoms, and to provide distinct legal services"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Values "
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. Honesty and transparency.
+2. Justice and Equality.
+3. Respect of the worth and dignity of the human.
+4. Responsibility and .teamwork
+5.Client is the First.
+6. Excellence. "/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Strategic Objectives"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1.The development of the judicial system and services in courts and prosecutors.
+2. Development of legislation and legal services in line with the best international practices.
+3. Strengthening the role of the ministry in the legal and judicial areas in both domestic and international levels.
+4. Ensure the submission of all administrative services in accordance with the standards of quality, efficiency and transparency."/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>
