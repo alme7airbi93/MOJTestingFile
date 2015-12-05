@@ -50,8 +50,15 @@ public class RegStepOne extends Fragment {
         // initialzing communicator
         communicator = (Communicator) getActivity();
 
-        NIDCard user= new NIDCard("789199312345678", "Mohammad", "0503151445", "AD", new Date());
+//        NIDCard user= new NIDCard("789199312345678", "Mohammad", "0503151445", "AD", new Date());
+//        mojManager.addNIDCard(user);
+
+        NIDCard user= new NIDCard("784199553043524", "Ali AlZaabi", "0566201995", "AD", new Date());
         mojManager.addNIDCard(user);
+        NIDCard user2= new NIDCard("1", "Saif AlZaabi", "0566201995", "AD", new Date());
+        mojManager.addNIDCard(user2);
+        NIDCard user3= new NIDCard("2", "Mohammed AlZaabi", "0566201995", "AD", new Date());
+        mojManager.addNIDCard(user3);
 
 
 

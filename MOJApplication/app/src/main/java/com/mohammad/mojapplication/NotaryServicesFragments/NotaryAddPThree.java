@@ -58,7 +58,7 @@ public class NotaryAddPThree extends Fragment {
         }
         else
         {
-            tvTest.setText(party.getPartyID()+ "   " +party.getfName() + "     "  +party.getImage1()+ "     " + service.getServiceID());
+            tvTest.setText(party.getPartyID()+ "   " +party.getfName() + "     "  +party.getImage1()+ "     " + service.getServiceID() + service.getUserID());
 
         }
 

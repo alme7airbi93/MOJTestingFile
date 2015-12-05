@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -15,6 +16,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -24,6 +26,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mohammad.mojapplication.Objects.User;
 import com.mohammad.mojapplication.mainActivityFragments.CaseTrackingFragment;
@@ -32,13 +35,22 @@ import com.mohammad.mojapplication.mainActivityFragments.NewsFragment;
 import com.mohammad.mojapplication.mainActivityFragments.ServicesFragments;
 import com.mohammad.mojapplication.mainActivityFragments.SittengsFragment;
 
-public class MainActivity extends AppCompatActivity implements CommunicatorMain, NavigationDrawerFragment.NavigationDrawerCallbacks {
+import java.util.ArrayList;
+import java.util.Vector;
+
+public class MainActivity extends AppCompatActivity implements CommunicatorMain, NavigationDrawerFragment.NavigationDrawerCallbacks
+{
     private MOJManager mojManager;
     private ProgressDialog progressDialog;
     private String userName;
     private TextView tvHeaderDrawerUserName;
     private PagerTabStrip pagerTabStrip;
     private ViewPager viewPager;
+
+    NewsFragment newsFragment = new NewsFragment();
+    ServicesFragments servicesFragments = new ServicesFragments();
+    CaseTrackingFragment caseTrackingFragment = new CaseTrackingFragment();
+    SittengsFragment sittengsFragment = new SittengsFragment();
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -92,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
 
         mojManager = MOJManager.getMOJManager(this);
         userName = this.getIntent().getStringExtra("userID");
+        Toast.makeText(MainActivity.this, userName, Toast.LENGTH_SHORT).show();
 
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
@@ -106,9 +119,9 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
         if (!userName.equals("guest")) {
             User user = mojManager.findUserById(userName);
             String name = user.getName();
-            tvHeaderDrawerUserName.setText("Welcome to Ministry of Juctise App, "+name);
+            tvHeaderDrawerUserName.setText("Welcome to Ministry of Justice App, "+name);
         }else if (userName.equals("guest")) {
-            tvHeaderDrawerUserName.setText("Welcome to Ministry of Juctise App, "+userName);
+            tvHeaderDrawerUserName.setText("Welcome to Ministry of Justice App, "+userName);
         }
         // Locate the viewpager in activity_main.xml
         viewPager = (ViewPager) findViewById(R.id.pager);
@@ -124,18 +137,24 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
         }, 100);
 
 
+
     }
 
-    private class ViewPagerAdapter extends FragmentPagerAdapter  {
+    private class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
         final int PAGE_COUNT = 4;
+
         // Tab Titles
         private String tabtitles[] = new String[] { "News", "Services", "Cases","Settings" };
+        ArrayList<Fragment> fragments = new ArrayList<>();
         Context context;
+
+
 
         public ViewPagerAdapter(FragmentManager fm) {
             super(fm);
         }
+
 
         @Override
         public int getCount() {
@@ -148,20 +167,22 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
 
                 // Open FragmentTab1.java
                 case 0:
-                    NewsFragment newsFragment = new NewsFragment();
+
                     return newsFragment;
 
                 // Open FragmentTab2.java
                 case 1:
-                     ServicesFragments servicesFragments = new ServicesFragments();
-                    return servicesFragments;
 
+                    return servicesFragments;
                 // Open FragmentTab3.java
                 case 2:
-                    CaseTrackingFragment caseTrackingFragment = new CaseTrackingFragment();
+
+
                     return caseTrackingFragment;
                 case 3:
-                    SittengsFragment sittengsFragment = new SittengsFragment();
+
+
+                
                     return sittengsFragment;
             }
             return null;
