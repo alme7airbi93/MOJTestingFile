@@ -76,6 +76,15 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.headerLayout);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setTitle("Preparing");
@@ -180,6 +189,7 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
                 case 2:
 
                     return caseTrackingFragment;
+
                 case 3:
 
                     return sittengsFragment;

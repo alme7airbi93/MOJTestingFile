@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
@@ -67,6 +68,19 @@ public class CaseTrackingFragment extends Fragment implements SwipeRefreshLayout
         List<Service> listest= mojManager.findServiceByUserId(id);
         servicesAdapter = new ServicesAdapter(getActivity(), listest);
         listView.setAdapter(servicesAdapter);
+    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            Service service = servicesAdapter.getItem(position);
+
+
+            Toast.makeText(getActivity(), service.getServiceID().toString(), Toast.LENGTH_LONG).show();
+
+
+
+        }
+    });
 
         return v;
     }
@@ -98,9 +112,12 @@ public class CaseTrackingFragment extends Fragment implements SwipeRefreshLayout
         }, 4000);
     }
 
+
     public class ServicesAdapter extends ArrayAdapter<Service> {
         public ServicesAdapter(Context context, List<Service> services) {
             super(context, 0, services);
+
+
         }
 
         @Override
@@ -114,9 +131,11 @@ public class CaseTrackingFragment extends Fragment implements SwipeRefreshLayout
             // Lookup view for data population
             TextView tvTitle = (TextView) convertView.findViewById(R.id.tvCaseTitle);
             TextView tvStatus = (TextView) convertView.findViewById(R.id.tvCaseStatus);
+            TextView tvDate = (TextView) convertView.findViewById(R.id.tvCaseDate);
             // Populate the data into the template view using the data object
-            tvTitle.setText(service.getServiceID());
-            tvStatus.setText(service.getServiceStatus());
+            tvTitle.setText("Case Ref No.: " + service.getServiceID());
+            tvStatus.setText("Status: " + service.getServiceStatus());
+            tvDate.setText("Date: "+ service.getDate());
             // Return the completed view to render on screen
             return convertView;
         }

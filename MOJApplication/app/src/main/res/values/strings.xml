@@ -18,16 +18,16 @@
     <string name="title_activity_maps">Map</string>
 
     <string-array name="sections_icons">
-        <item>@android:drawable/ic_delete</item>
+        <item>@drawable/informationicon</item>
         <item>@drawable/googlemap</item>
-        <item>@drawable/drawericnloginfix</item>
+        <item>@drawable/iconlogin</item>
 
 
     </string-array>
     <string-array name="sections_icons_out">
-        <item>@android:drawable/ic_delete</item>
+        <item>@drawable/informationicon</item>
         <item>@drawable/googlemap</item>
-        <item>@drawable/drawericonlogout</item>
+        <item>@drawable/iconlogout</item>
 
 
     </string-array>

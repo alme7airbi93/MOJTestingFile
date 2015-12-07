@@ -24,6 +24,15 @@
         android:text="Status:"
         android:id="@+id/tvCaseStatus"
         android:layout_marginBottom="4dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:text="Status:"
+
+        android:id="@+id/tvCaseDate"
+        android:layout_marginBottom="4dp"
+        android:textColor="#9bacacad" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

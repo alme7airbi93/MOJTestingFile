@@ -61,8 +61,8 @@ public class Login extends Fragment
 //                user = mojManager.findUserByUserName("alme7airbi");
 //                Toast.makeText(getActivity(),etUserName.getText().toString(),Toast.LENGTH_LONG).show();
 
-                User user= new User("321", "ali", "0566201995", "AD", "3bb", "123","1995");
-                mojManager.addUser(user);
+
+
 
                 try{
 

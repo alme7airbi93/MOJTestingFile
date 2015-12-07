@@ -49,18 +49,18 @@ public class NotaryAddPThree extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         View v = inflater.inflate(R.layout.fragment_services_pg_three, container, false);
         communicatorService = (CommunicatorService) getActivity();
-        TextView tvTest = (TextView) v.findViewById(R.id.tvTest);
-
-
-        if(party2 != null)
-        {
-            tvTest.setText(party.getPartyID()+ "   " +party2.getPartyID() + "     "  +party2.getfName()+ "     " + service.getServiceID());
-        }
-        else
-        {
-            tvTest.setText(party.getPartyID()+ "   " +party.getfName() + "     "  +party.getImage1()+ "     " + service.getServiceID() + service.getUserID());
-
-        }
+//        TextView tvTest = (TextView) v.findViewById(R.id.tvTest);
+//
+//
+//        if(party2 != null)
+//        {
+//            tvTest.setText(party.getPartyID()+ "   " +party2.getPartyID() + "     "  +party2.getfName()+ "     " + service.getServiceID());
+//        }
+//        else
+//        {
+//            tvTest.setText(party.getPartyID()+ "   " +party.getfName() + "     "  +party.getImage1()+ "     " + service.getServiceID() + service.getUserID());
+//
+//        }
 
 
         btnPay = (Button) v.findViewById(R.id.btnPay);
