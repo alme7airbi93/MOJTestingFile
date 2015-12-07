@@ -110,7 +110,7 @@ public class RegistrationActivity extends AppCompatActivity implements Communica
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.registrationActivityLayout, welcome, "WLC");
         transaction.commit();
-        stopStepOne();
+
 
     }
     @Override

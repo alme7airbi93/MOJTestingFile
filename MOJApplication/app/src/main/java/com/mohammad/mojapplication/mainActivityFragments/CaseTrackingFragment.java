@@ -23,6 +23,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mohammad.mojapplication.CommunicatorMain;
 import com.mohammad.mojapplication.MOJManager;
 import com.mohammad.mojapplication.MainActivity;
 import com.mohammad.mojapplication.Objects.Service;
@@ -42,8 +43,9 @@ public class CaseTrackingFragment extends Fragment implements SwipeRefreshLayout
     private MOJManager mojManager;
     private ListView listView;
     private ServicesAdapter servicesAdapter;
-    String id = "";
+    private String id = "";
     private SwipeRefreshLayout swipeRefreshLayout;
+    private CommunicatorMain communicator;
 
 
     @Nullable
@@ -52,6 +54,8 @@ public class CaseTrackingFragment extends Fragment implements SwipeRefreshLayout
         View v =  inflater.inflate(R.layout.case_tracking_fragment_layout,container,false);
 
 
+
+        communicator = (CommunicatorMain) getActivity();
 
         mojManager = MOJManager.getMOJManager(getActivity());
 
@@ -68,6 +72,7 @@ public class CaseTrackingFragment extends Fragment implements SwipeRefreshLayout
         List<Service> listest= mojManager.findServiceByUserId(id);
         servicesAdapter = new ServicesAdapter(getActivity(), listest);
         listView.setAdapter(servicesAdapter);
+
     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -75,7 +80,19 @@ public class CaseTrackingFragment extends Fragment implements SwipeRefreshLayout
             Service service = servicesAdapter.getItem(position);
 
 
-            Toast.makeText(getActivity(), service.getServiceID().toString(), Toast.LENGTH_LONG).show();
+            if (service.getServiceStatus().equals("Signature")) {
+                communicator.startSignature(getActivity().getIntent().getStringExtra("userID"),service.getServiceID());
+            }
+              if (service.getServiceStatus().equals("Approved")) {
+                  Toast.makeText(getActivity(), "Wait for Delivery", Toast.LENGTH_SHORT).show();
+            }
+              if (service.getServiceStatus().equals("Decline")) {
+                  Toast.makeText(getActivity(), "Open New Case", Toast.LENGTH_SHORT).show();
+            }
+
+
+
+
 
 
 

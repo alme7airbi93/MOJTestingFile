@@ -1,6 +1,7 @@
 package com.mohammad.mojapplication;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -9,10 +10,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,16 +26,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mohammad.mojapplication.Objects.Service;
 import com.mohammad.mojapplication.Objects.User;
 import com.mohammad.mojapplication.mainActivityFragments.CaseTrackingFragment;
+import com.mohammad.mojapplication.mainActivityFragments.DebugDialog;
 import com.mohammad.mojapplication.mainActivityFragments.NavigationDrawerFragment;
 import com.mohammad.mojapplication.mainActivityFragments.NewsFragment;
 import com.mohammad.mojapplication.mainActivityFragments.ServicesFragments;
+import com.mohammad.mojapplication.mainActivityFragments.SettingsDialogFragment;
 import com.mohammad.mojapplication.mainActivityFragments.SittengsFragment;
 
 import java.util.ArrayList;
@@ -73,6 +81,16 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
     }
 
     @Override
+    public void startSignature(String id,String serviceID) {
+        Intent i = new Intent(MainActivity.this, DrawingActivity.class);
+
+        i.putExtra("serviceID", serviceID);
+        i.putExtra("userID", getIntent().getStringExtra("userID"));
+        startActivity(i);
+        this.finish();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -81,7 +99,55 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
             @Override
             public void onClick(View v) {
 
+                final Dialog dialog = new Dialog(MainActivity.this);
+                dialog.setContentView(R.layout.debug_dialog);
+                dialog.setTitle("Title...");
 
+               Button btnApproved = (Button) dialog.findViewById(R.id.btnApproved);
+               Button btnDeclined = (Button) dialog.findViewById(R.id.btnDeclined);
+               Button btnSignature = (Button) dialog.findViewById(R.id.btnSignature);
+                final EditText etRef = (EditText) dialog.findViewById(R.id.etDebug);
+
+
+
+                btnApproved.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+
+                        Service service = mojManager.findServiceById(etRef.getText().toString());
+                        service.setServiceStatus("Approved");
+                        mojManager.updateService(service);
+                        dialog.dismiss();
+
+                    }
+                });
+                btnDeclined.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+
+                        Service service = mojManager.findServiceById(etRef.getText().toString());
+                        service.setServiceStatus("Decline");
+                        mojManager.updateService(service);
+                        dialog.dismiss();
+
+                    }
+                });
+                btnSignature.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+
+                        Service service = mojManager.findServiceById(etRef.getText().toString());
+                        service.setServiceStatus("Signature");
+                        mojManager.updateService(service);
+                        dialog.dismiss();
+
+                    }
+                });
+
+                dialog.show();
             }
         });
 

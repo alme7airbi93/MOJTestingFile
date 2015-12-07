@@ -18,6 +18,7 @@ import com.mohammad.mojapplication.Objects.User;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static com.mohammad.mojapplication.MOJdatabase.MOJDbSchema.*;
 
@@ -83,7 +84,7 @@ public class MOJManager {
     public void update(User user) {
         String id = user.getId();
         ContentValues values = getContentValues(user);
-        database.update(UserTable.NAME, values, UserTable.Cols.ID +" = ?",new String[] {id.toString()});
+        database.update(UserTable.NAME, values, UserTable.Cols.ID + " = ?", new String[]{id.toString()});
 
     }
 
@@ -105,6 +106,8 @@ public class MOJManager {
 
 
     }
+
+
 
     public User findUserByUserName(String userName) {
         MOJCursorWraper cursorWraper =
@@ -205,7 +208,15 @@ public class MOJManager {
         database.insert(ServiceTable.NAME, null, values);
     }
 
-    public User findServiceById(String id) {
+    public void updateService(Service service)
+    {
+        String id = service.getServiceID();
+        ContentValues values = getContentValuesService(service);
+        database.update(ServiceTable.NAME, values, ServiceTable.Cols.SERVICEID + " =?",
+                new String[]{id.toString()});
+    }
+
+    public Service findServiceById(String id) {
         MOJCursorWraper cursorWraper =
                 querryServiceTable(ServiceTable.Cols.SERVICEID + " = ?", new String[]{id.toString()});
 
@@ -215,7 +226,7 @@ public class MOJManager {
             }
 
             cursorWraper.moveToFirst();
-            return cursorWraper.getUser();
+            return cursorWraper.getService();
         } finally {
             cursorWraper.close();
         }

@@ -13,6 +13,8 @@ public interface CommunicatorMain {
 
     public void sendStringToMain(String string);
 
+    public void startSignature(String id,String serviceID);
+
 
 
 
