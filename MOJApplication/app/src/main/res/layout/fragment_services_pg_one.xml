@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+    android:background="#07000000">
 
 
     <TextView
-        android:layout_width="wrap_content"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Page 1 of 3"
         android:id="@+id/tvPage"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"></LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="30dp"
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout">
 
@@ -24,19 +35,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="1. Location of Notar Office:"
+            android:text="Chose service location:"
             android:id="@+id/textView"
-            android:layout_marginTop="50dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
         <Spinner
-            android:layout_width="wrap_content"
+            style="@android:style/Widget.Spinner"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/spLocation"
             android:layout_below="@+id/textView"
-
-            android:layout_centerHorizontal="true"
             android:entries="@array/emirates"
             android:spinnerMode="dialog" />
 
@@ -44,36 +53,35 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
         android:id="@+id/linearLayout2">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="2. Document Type:"
+            android:text="Chose Notary type: "
             android:id="@+id/textView2"
-            android:layout_marginTop="50dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
         <Spinner
-            android:layout_width="wrap_content"
+            style="@android:style/Widget.Spinner"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/spDocType"
             android:layout_below="@+id/textView2"
-            android:layout_centerHorizontal="true"
             android:entries="@array/NType"
             android:spinnerMode="dialog" />
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout2"
         android:layout_alignParentLeft="true"
@@ -84,9 +92,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="3. Parties:"
+            android:text="Adding a party: "
             android:id="@+id/textView3"
-            android:layout_marginTop="50dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
@@ -96,18 +103,8 @@
             android:id="@+id/loFirstParty"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="1st party: "
-                android:id="@+id/textView4"
-                android:layout_below="@+id/linearLayout3"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
 
             <Button
-                style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add Party"
@@ -121,44 +118,45 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="FirstParty"
                 android:id="@+id/tvFirParty" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/loSecondParty"
-            android:orientation="horizontal">
-
+            android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="2nd party:"
+                android:text="Adding socend party(optional) :"
                 android:id="@+id/textView44"
                 android:layout_below="@+id/linearLayout3"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="add party"
-                android:id="@+id/btnAddParty2"
-                android:layout_alignBottom="@+id/linearLayout3"
-                android:layout_toRightOf="@+id/linearLayout3"
-                android:layout_toEndOf="@+id/linearLayout3"
                  />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Second party"
-                android:id="@+id/tvSecParty" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="add party"
+                    android:id="@+id/btnAddParty2"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/tvSecParty" />
+
+            </LinearLayout>
+
+
 
         </LinearLayout>
 
@@ -166,12 +164,13 @@
     </LinearLayout>
 
     <Button
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="wrap_content"
         android:text="Next"
         android:id="@+id/btnServNextFirst"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
 
 
-</RelativeLayout>
+</LinearLayout>

@@ -23,7 +23,11 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="#52fafeff">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+    </ScrollView>
         <TextView
         android:textStyle="bold"
         android:layout_width="match_parent"

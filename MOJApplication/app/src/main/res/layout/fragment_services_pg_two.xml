@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:orientation="vertical"
+        android:background="#07000000">
 
-
-
-
-    <Button
+    <TextView
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:text="Next"
-        android:id="@+id/btnServNextSecond"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Page 2 of 3"
+        android:id="@+id/tvPage"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"></LinearLayout>
+
+
+
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="121dp"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
         android:id="@+id/linearLayout4">
 
         <TextView
@@ -30,20 +42,16 @@
             android:text="Pin Code:"
             android:id="@+id/textView5"
 
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-
              />
 
         <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:inputType="number"
             android:ems="10"
             android:id="@+id/etPinServ"
-            android:layout_below="@+id/textView5"
-            android:layout_centerHorizontal="true" />
+            android:layout_marginTop="10dp"/>
 
     </LinearLayout>
 
@@ -51,41 +59,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/linearLayout4"
-        android:layout_alignStart="@+id/linearLayout4"
         android:id="@+id/linearLayout5">
 
         <Button
+            android:layout_marginTop="40dp"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Take Pic"
             android:id="@+id/btnPic2"
-            android:layout_alignBottom="@+id/linearLayout3"
-            android:layout_toRightOf="@+id/linearLayout3"
-            android:layout_toEndOf="@+id/linearLayout3" />
+             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="&quot;"
             android:id="@+id/tvPic2"
-            android:layout_below="@+id/linearLayout3"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Page 2 of 3"
-        android:id="@+id/textView17"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:text="Next"
+        android:id="@+id/btnServNextSecond"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
 
 
-</RelativeLayout>
+</LinearLayout>

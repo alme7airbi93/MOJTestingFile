@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
     private TextView tvHeaderDrawerUserName;
     private PagerTabStrip pagerTabStrip;
     private ViewPager viewPager;
+    private ViewPagerAdapter viewPagerAdapter;
 
     NewsFragment newsFragment = new NewsFragment();
     ServicesFragments servicesFragments = new ServicesFragments();
@@ -123,11 +124,13 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
         }else if (userName.equals("guest")) {
             tvHeaderDrawerUserName.setText("Welcome to Ministry of Justice App, "+userName);
         }
+
         // Locate the viewpager in activity_main.xml
         viewPager = (ViewPager) findViewById(R.id.pager);
         pagerTabStrip = (PagerTabStrip) findViewById(R.id.pagerTab);
         // Set the ViewPagerAdapter into ViewPager
-        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(viewPagerAdapter);
         viewPager.setCurrentItem(1);
         viewPager.postDelayed(new Runnable() {
             @Override
@@ -135,6 +138,7 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
                 viewPager.setCurrentItem(0);
             }
         }, 100);
+
 
 
 
@@ -167,22 +171,17 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
 
                 // Open FragmentTab1.java
                 case 0:
-
                     return newsFragment;
 
                 // Open FragmentTab2.java
                 case 1:
-
                     return servicesFragments;
                 // Open FragmentTab3.java
                 case 2:
 
-
                     return caseTrackingFragment;
                 case 3:
 
-
-                
                     return sittengsFragment;
             }
             return null;

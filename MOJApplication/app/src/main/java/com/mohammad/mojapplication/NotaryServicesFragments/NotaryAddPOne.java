@@ -80,7 +80,7 @@ public class NotaryAddPOne extends Fragment {
         btnNext = (Button) v.findViewById(R.id.btnServNextFirst);
         loFirstParty = (LinearLayout) v.findViewById(R.id.loFirstParty);
         loSecondParty = (LinearLayout) v.findViewById(R.id.loSecondParty);
-
+        btnNext.setEnabled(false);
 
         if(party == null)
         {
@@ -88,6 +88,7 @@ public class NotaryAddPOne extends Fragment {
         }
         else
         {
+            btnNext.setEnabled(true);
             loSecondParty.setVisibility(View.VISIBLE);
         }
 
@@ -116,6 +117,7 @@ public class NotaryAddPOne extends Fragment {
                     }
                     else
                     {
+
                         Service service = new Service(user.getId(), spDocType.getSelectedItem().toString(),
                                 randID + "", new Date(), "Pending", party.getPartyID(), "",spLoc.getSelectedItem().toString());
                         communicatorService.sendToStepTwo(service, user, party,party2);
