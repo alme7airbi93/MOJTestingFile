@@ -1,6 +1,7 @@
 package com.mohammad.mojapplication.NotaryServicesFragments;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,14 +30,17 @@ public class NotaryAddPTwo extends Fragment {
 
 
     EditText etPin;
-    Button btnNext,btnPic2;
-    TextView tvPic2;
+    Button btnNext,btnPic1,btnPic2,btnPic3;
+    LinearLayout lopic1,loPic2,loPic3;
+    TextView tvPic1,tvPic2,tvPic3;
     MOJManager mojManager;
     Party party,party2;
     Service service;
     User user;
     CommunicatorService communicatorService;
-    Uri selectedImage;
+    private Uri selectedImage;
+    private String imageString;
+
 
     public void receiveUser(Service service,User user,Party party,Party party2) {
 
@@ -59,10 +64,26 @@ public class NotaryAddPTwo extends Fragment {
 
         communicatorService = (CommunicatorService) getActivity();
 
+        tvPic1 = (TextView) v.findViewById(R.id.tvPic1);
         tvPic2 = (TextView) v.findViewById(R.id.tvPic2);
+        tvPic3 = (TextView) v.findViewById(R.id.tvPic3);
         etPin = (EditText) v.findViewById(R.id.etPinServ);
+        btnPic1 = (Button) v.findViewById(R.id.btnPic1);
         btnPic2 = (Button) v.findViewById(R.id.btnPic2);
-        btnPic2.setOnClickListener(new View.OnClickListener() {
+        btnPic3 = (Button) v.findViewById(R.id.btnPic3);
+        lopic1 = (LinearLayout) v.findViewById(R.id.loPic1);
+        loPic2 = (LinearLayout) v.findViewById(R.id.loPic2);
+        loPic3 = (LinearLayout) v.findViewById(R.id.loPic3);
+        if (party2 != null)
+        {
+            loPic2.setVisibility(View.INVISIBLE);
+            tvPic2.setText(party2.getType() + " Document");
+        }
+        tvPic1.setText(party.getType() + " Document");
+
+        tvPic3.setText(service.getType() + " Document");
+
+        btnPic1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -74,6 +95,42 @@ public class NotaryAddPTwo extends Fragment {
                 startActivityForResult(i, 111);
             }
         });
+        btnPic1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+//                communicatorService.PartyToCam(one,two,spPartyType.getSelectedItemPosition(),etNIDCardAddParty.getText().toString());
+                Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+
+                startActivityForResult(i, 222);
+            }
+        });
+        btnPic2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+//                communicatorService.PartyToCam(one,two,spPartyType.getSelectedItemPosition(),etNIDCardAddParty.getText().toString());
+                Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+
+                startActivityForResult(i, 333);
+            }
+        });
+        btnPic3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+//                communicatorService.PartyToCam(one,two,spPartyType.getSelectedItemPosition(),etNIDCardAddParty.getText().toString());
+                Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+
+                startActivityForResult(i, 333);
+            }
+        });
 
         btnNext = (Button) v.findViewById(R.id.btnServNextSecond);
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -83,10 +140,13 @@ public class NotaryAddPTwo extends Fragment {
 
                 User userCompare = mojManager.findUserById(user.getId());
 
-                if(etPin.getText().toString().equals(userCompare.getServicePass()))
-                {
-
-                    communicatorService.sendToStepThree(service,user, party,party2);
+                if(etPin.getText().toString().equals(userCompare.getServicePass())) {
+                    if (!party.getImage1().equals("")) {
+                        communicatorService.sendToStepThree(service, user, party, party2);
+                    } else {
+                        tvPic1.setText("Required Image");
+                        tvPic1.setTextColor(Color.RED);
+                    }
 
                 }
                 else
@@ -99,8 +159,10 @@ public class NotaryAddPTwo extends Fragment {
         });
 
 
+
         return v;
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -109,11 +171,29 @@ public class NotaryAddPTwo extends Fragment {
         if(requestCode == 111 && resultCode == -1&& data != null)
         {
             selectedImage = data.getData();
+            tvPic1.setText("Picture Attached");
+            imageString = selectedImage.toString();
+            party.setImage1(imageString);
+        }
+
+        if(requestCode == 222 && resultCode == -1&& data != null)
+        {
+            selectedImage = data.getData();
             tvPic2.setText("Picture Attached");
+            imageString = selectedImage.toString();
+            party2.setImage1(imageString);
+        }
+
+        if(requestCode == 333 && resultCode == -1&& data != null)
+        {
+            selectedImage = data.getData();
+            tvPic3.setText("Picture Attached");
+            imageString = selectedImage.toString();
 
         }
 
     }
+
 
 
 }

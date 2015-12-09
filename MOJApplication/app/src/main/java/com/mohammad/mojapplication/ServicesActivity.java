@@ -119,7 +119,7 @@ public class ServicesActivity extends AppCompatActivity implements CommunicatorS
     @Override
     public void backFromAddTwo(Party party, Party party2, int one, int two) {
         NotaryAddPOne notaryAddPOne = new NotaryAddPOne();
-        notaryAddPOne.receiveExtraFromSecondParty(party,party2, one, two);
+        notaryAddPOne.receiveExtraFromSecondParty(party, party2, one, two);
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.servicesActivityLayout, notaryAddPOne, "NPO");
         transaction.commit();
@@ -151,6 +151,16 @@ public class ServicesActivity extends AppCompatActivity implements CommunicatorS
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.remove(notaryAddParty);
         transaction.commit();
+    }
+
+    @Override
+    public void startSignature(String id,String serviceID) {
+        Intent i = new Intent(ServicesActivity.this, DrawingActivity.class);
+
+        i.putExtra("serviceID", serviceID);
+        i.putExtra("userID", getIntent().getStringExtra("userID"));
+        startActivity(i);
+        this.finish();
     }
 
 

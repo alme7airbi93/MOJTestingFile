@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,7 +70,7 @@ public class CaseTrackingFragment extends Fragment implements SwipeRefreshLayout
 
         swipeRefreshLayout.setOnRefreshListener(this);
         listView = (ListView) v.findViewById(R.id.list_view);
-        List<Service> listest= mojManager.findServiceByUserId(id);
+        List<Service> listest= mojManager.findServiceByUserId(this.id);
         servicesAdapter = new ServicesAdapter(getActivity(), listest);
         listView.setAdapter(servicesAdapter);
 
@@ -79,6 +80,8 @@ public class CaseTrackingFragment extends Fragment implements SwipeRefreshLayout
 
             Service service = servicesAdapter.getItem(position);
 
+
+            Toast.makeText(getActivity(), service.getUserID(), Toast.LENGTH_SHORT).show();
 
             if (service.getServiceStatus().equals("Signature")) {
                 communicator.startSignature(getActivity().getIntent().getStringExtra("userID"),service.getServiceID());
@@ -145,11 +148,17 @@ public class CaseTrackingFragment extends Fragment implements SwipeRefreshLayout
             if (convertView == null) {
                 convertView = LayoutInflater.from(getActivity()).inflate(R.layout.custom_list_cases, parent, false);
             }
+
+
             // Lookup view for data population
             TextView tvTitle = (TextView) convertView.findViewById(R.id.tvCaseTitle);
             TextView tvStatus = (TextView) convertView.findViewById(R.id.tvCaseStatus);
             TextView tvDate = (TextView) convertView.findViewById(R.id.tvCaseDate);
+            LinearLayout loList = (LinearLayout) convertView.findViewById(R.id.loList);
             // Populate the data into the template view using the data object
+            if (position % 2 == 0) {
+                loList.setBackgroundResource(R.color.darkgrey);
+            }
             tvTitle.setText("Case Ref No.: " + service.getServiceID());
             tvStatus.setText("Status: " + service.getServiceStatus());
             tvDate.setText("Date: "+ service.getDate());

@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
     private PagerTabStrip pagerTabStrip;
     private ViewPager viewPager;
     private ViewPagerAdapter viewPagerAdapter;
+    private int f = 0;
 
     NewsFragment newsFragment = new NewsFragment();
     ServicesFragments servicesFragments = new ServicesFragments();
@@ -95,59 +96,67 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.headerLayout);
+
+
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                final Dialog dialog = new Dialog(MainActivity.this);
-                dialog.setContentView(R.layout.debug_dialog);
-                dialog.setTitle("Title...");
 
-               Button btnApproved = (Button) dialog.findViewById(R.id.btnApproved);
-               Button btnDeclined = (Button) dialog.findViewById(R.id.btnDeclined);
-               Button btnSignature = (Button) dialog.findViewById(R.id.btnSignature);
-                final EditText etRef = (EditText) dialog.findViewById(R.id.etDebug);
+                f = f + 1;
 
+                if (f == 5) {
+                    final Dialog dialog = new Dialog(MainActivity.this);
+                    dialog.setContentView(R.layout.debug_dialog);
+                    dialog.setTitle("Title...");
 
-
-                btnApproved.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                    Button btnApproved = (Button) dialog.findViewById(R.id.btnApproved);
+                    Button btnDeclined = (Button) dialog.findViewById(R.id.btnDeclined);
+                    Button btnSignature = (Button) dialog.findViewById(R.id.btnSignature);
+                    final EditText etRef = (EditText) dialog.findViewById(R.id.etDebug);
 
 
-                        Service service = mojManager.findServiceById(etRef.getText().toString());
-                        service.setServiceStatus("Approved");
-                        mojManager.updateService(service);
-                        dialog.dismiss();
-
-                    }
-                });
-                btnDeclined.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                    btnApproved.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
 
 
-                        Service service = mojManager.findServiceById(etRef.getText().toString());
-                        service.setServiceStatus("Decline");
-                        mojManager.updateService(service);
-                        dialog.dismiss();
+                            Service service = mojManager.findServiceById(etRef.getText().toString());
+                            service.setServiceStatus("Approved");
+                            mojManager.updateService(service);
+                            dialog.dismiss();
 
-                    }
-                });
-                btnSignature.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                        }
+                    });
+                    btnDeclined.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
 
 
-                        Service service = mojManager.findServiceById(etRef.getText().toString());
-                        service.setServiceStatus("Signature");
-                        mojManager.updateService(service);
-                        dialog.dismiss();
+                            Service service = mojManager.findServiceById(etRef.getText().toString());
+                            service.setServiceStatus("Decline");
+                            mojManager.updateService(service);
+                            dialog.dismiss();
 
-                    }
-                });
+                        }
+                    });
+                    btnSignature.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
 
-                dialog.show();
+
+                            Service service = mojManager.findServiceById(etRef.getText().toString());
+                            service.setServiceStatus("Signature");
+                            mojManager.updateService(service);
+                            dialog.dismiss();
+
+                        }
+                    });
+
+                    dialog.show();
+                    f = 0;
+                }
+
             }
         });
 
@@ -315,7 +324,7 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
 
         i.putExtra("userID", getIntent().getStringExtra("userID"));
         startActivity(i);
-        this.finish();
+//        this.finish();
 
     }
 

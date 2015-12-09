@@ -61,6 +61,8 @@ public class RegStepOne extends Fragment {
         mojManager.addNIDCard(usere2);
         NIDCard usere3= new NIDCard("222222222222222", "Mohammed AlZaabi", "0561234567", "SHJ", new Date());
         mojManager.addNIDCard(usere3);
+        NIDCard usere9= new NIDCard("999999999999999", "Khalifa AlZaabi", "0507322290", "SHJ", new Date());
+        mojManager.addNIDCard(usere9);
         NIDCard usere4= new NIDCard("333333333333333", "Saoud AlZaabi", "0551234567", "RAK", new Date());
         mojManager.addNIDCard(usere4);
         NIDCard user2= new NIDCard("1", "Saif AlZaabi", "0566201995", "AD", new Date());

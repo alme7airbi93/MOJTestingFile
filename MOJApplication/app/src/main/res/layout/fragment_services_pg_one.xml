@@ -4,9 +4,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-    android:background="#07000000">
+        android:padding="20dp"
+        android:background="#07000000">
 
 
     <TextView
@@ -22,7 +21,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/black"></LinearLayout>
+        android:background="@color/black"/>
 
     <LinearLayout
         android:layout_marginTop="30dp"
@@ -32,22 +31,38 @@
         android:id="@+id/linearLayout">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Chose service location:"
             android:id="@+id/textView"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:textSize="15dp" />
 
-        <Spinner
-            style="@android:style/Widget.Spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spLocation"
-            android:layout_below="@+id/textView"
-            android:entries="@array/emirates"
-            android:spinnerMode="dialog" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <Spinner
+        android:layout_weight="1"
+        style="@android:style/Widget.Spinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/spLocation"
+        android:entries="@array/emirates"
+        android:spinnerMode="dialog" />
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spLocationRequir" />
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spLocationTrue"
+        android:background="@android:drawable/checkbox_on_background"/>
+</LinearLayout>
+
 
     </LinearLayout>
 
@@ -60,22 +75,34 @@
         android:id="@+id/linearLayout2">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Chose Notary type: "
             android:id="@+id/textView2"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:textSize="15dp" />
 
-        <Spinner
-            style="@android:style/Widget.Spinner"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/spDocType"
-            android:layout_below="@+id/textView2"
-            android:entries="@array/NType"
-            android:spinnerMode="dialog" />
+            android:orientation="horizontal">
+            <Spinner
+                style="@android:style/Widget.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/spDocType"
+                android:entries="@array/NType"
+                android:spinnerMode="dialog" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spDocTypeFalse"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spDocTypeTrue"/>
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -83,22 +110,18 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:id="@+id/linearLayout3">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Adding a party: "
             android:id="@+id/textView3"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:textSize="15dp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/loFirstParty"
             android:orientation="horizontal">
@@ -129,12 +152,12 @@
             android:id="@+id/loSecondParty"
             android:orientation="vertical">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Adding socend party(optional) :"
+                android:text="Adding second party(optional) :"
                 android:id="@+id/textView44"
-                android:layout_below="@+id/linearLayout3"
+                android:textSize="15dp"
                  />
 
             <LinearLayout
@@ -164,13 +187,12 @@
     </LinearLayout>
 
     <Button
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Next"
         android:id="@+id/btnServNextFirst"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+       />
 
 
 </LinearLayout>

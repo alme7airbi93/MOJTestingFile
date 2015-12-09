@@ -76,7 +76,7 @@ public class NotaryAddPThree extends Fragment {
                     mojManager.addParty(party2);
                 }
 
-                communicatorService.backtoMain(user.getId());
+                communicatorService.startSignature(user.getId(),service.getServiceID());
             }
         });
         return v;

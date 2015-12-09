@@ -235,7 +235,7 @@ public class MOJManager {
     }
 
     public List<Service> findServiceByUserId(String id) {
-        MOJCursorWraper cursorWraper = querryServiceTable(null,null);
+        MOJCursorWraper cursorWraper = querryServiceTable(ServiceTable.Cols.USERID + " = ?", new String[]{id.toString()});
         List<Service> services = new ArrayList<>();
 
 

@@ -4,20 +4,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="10dp"
+        android:padding="20dp"
         android:background="#07000000"
     >
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Adding Party"
         android:id="@+id/textView6" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
 
     <RadioGroup
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/rbgParty"
@@ -44,7 +49,7 @@
     </RadioGroup>
 
     <ScrollView
-        android:layout_below="@id/rbgParty"
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/svMan" >
@@ -53,11 +58,13 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Party Type:"
@@ -66,13 +73,14 @@
             <Spinner
                 style="@android:style/Widget.Spinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:id="@+id/spPartyTypeMan"
                 android:entries="@array/PType"
                 android:spinnerMode="dialog" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Identification Document"
@@ -81,41 +89,18 @@
             <Spinner
                 style="@android:style/Widget.Spinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:id="@+id/spidDoc"
                 android:entries="@array/idDoc"
                 android:spinnerMode="dialog" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
 
-                <Button
-                    style="?android:attr/buttonStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Browse..."
-                    android:id="@+id/btnPicMan"
-                    android:layout_alignBottom="@+id/linearLayout3"
-                    android:layout_toRightOf="@+id/linearLayout3"
-                    android:layout_toEndOf="@+id/linearLayout3" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text=""
-                    android:id="@+id/tvPicMan"
-                    android:layout_below="@+id/linearLayout3"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
-            </LinearLayout>
 
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Name:"
@@ -129,7 +114,8 @@
                 android:id="@+id/etNameAddPartyMan" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Mobile:"
@@ -144,7 +130,8 @@
                 android:id="@+id/etMobileAddPartyMan" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Address:"
@@ -172,7 +159,8 @@
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:textSize="15dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Party Type:"
@@ -181,13 +169,14 @@
         <Spinner
             style="@android:style/Widget.Spinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:id="@+id/spPartyType"
             android:entries="@array/PType"
             android:spinnerMode="dialog" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:textSize="15dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Enter ID Card:"
@@ -201,43 +190,19 @@
             android:id="@+id/etNidCardAddParty" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:textSize="15dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Picture of National ID:"
             android:id="@+id/tvBackPic" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Browse..."
-                android:id="@+id/btnPic"
-                android:layout_alignBottom="@+id/linearLayout3"
-                android:layout_toRightOf="@+id/linearLayout3"
-                android:layout_toEndOf="@+id/linearLayout3" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text=""
-                android:id="@+id/tvPic"
-                android:layout_below="@+id/linearLayout3"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-        </LinearLayout>
 
 
     </LinearLayout>
 
     <Button
+
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

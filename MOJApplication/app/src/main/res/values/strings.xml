@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Smart Cort</string>
-
+    <string name="location_prompt">Select a City...</string>
+    <string name="service_type_notary_prompt" >Select a service type...</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_registration">Registration</string>
     <string name="title_activity_main2">Main2Activity</string>

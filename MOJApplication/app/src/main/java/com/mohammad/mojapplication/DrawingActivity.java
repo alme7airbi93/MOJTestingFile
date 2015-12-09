@@ -39,7 +39,13 @@ public class DrawingActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         mojManager = MOJManager.getMOJManager(this);
+
+        Service service = mojManager.findServiceById(getIntent().getStringExtra("serviceID"));
+        service.setServiceStatus("Awaiting Signature From User");
+        mojManager.updateService(service);
+
         setContentView(R.layout.drawing);
         drawingV = (DrawingV) findViewById(R.id.drawingV);
         loButtons = (LinearLayout) findViewById(R.id.loDrawing);

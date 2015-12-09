@@ -2,6 +2,7 @@
 <resources>
 
     <array name="emirates">
+        <item>Select a City...</item>
         <item>Abu Dhabi</item>
         <item>Dubai</item>
         <item>Sharjah</item>
@@ -12,6 +13,7 @@
     </array>
 
     <array name="NType">
+        <item>Select service type...</item>
         <item>legal</item>
         <item>financial</item>
         <item>stock</item>
@@ -20,11 +22,13 @@
 
 
     <array name="PType">
+        <item>Select party type...</item>
         <item>Client</item>
         <item>Lawyer</item>
         <item>Translator</item>
     </array>
     <array name="idDoc">
+        <item>Select ID card type...</item>
         <item>Driver Lisence</item>
         <item>Passport</item>
         <item>Health Card</item>

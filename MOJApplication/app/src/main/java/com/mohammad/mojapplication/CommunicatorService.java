@@ -21,7 +21,7 @@ public interface CommunicatorService {
 
     public void backFromAdd(Party party,int one, int two);
     public void backFromAddTwo(Party party,Party party2,int one, int two);
-
+    public void startSignature(String id,String serviceID);
     public void stopStepOne();
     public void stopStepTwo();
     public void stopStepAdd();

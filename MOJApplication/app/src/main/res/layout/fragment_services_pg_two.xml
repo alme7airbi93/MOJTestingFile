@@ -25,57 +25,84 @@
 
 
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
-        android:gravity="center"
-        android:id="@+id/linearLayout4">
 
-        <TextView
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loPic1"
+        android:orientation="horizontal" >
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Pin Code:"
-            android:id="@+id/textView5"
+            android:text="Browse..."
+            android:id="@+id/btnPic1" />
 
-             />
-
-        <EditText
-            android:background="#fff"
+        <TextView
+            android:textSize="15dp"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/etPinServ"
-            android:layout_marginTop="10dp"/>
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text=""
+            android:id="@+id/tvPic1"
+            android:layout_below="@+id/linearLayout3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/linearLayout5">
+        android:id="@+id/loPic2"
+        android:orientation="horizontal" >
 
         <Button
-            android:layout_marginTop="40dp"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Take Pic"
-            android:id="@+id/btnPic2"
-             />
+            android:text="Browse..."
+            android:id="@+id/btnPic2" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:textSize="15dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text=""
             android:id="@+id/tvPic2"
-            />
+            android:layout_below="@+id/linearLayout3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loPic3"
+        android:orientation="horizontal" >
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Browse..."
+            android:id="@+id/btnPic3" />
+
+        <TextView
+            android:textSize="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text=""
+            android:id="@+id/tvPic3"
+            android:layout_below="@+id/linearLayout3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
     </LinearLayout>
 
 
