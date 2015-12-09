@@ -74,9 +74,12 @@ public class NotaryAddPTwo extends Fragment {
         lopic1 = (LinearLayout) v.findViewById(R.id.loPic1);
         loPic2 = (LinearLayout) v.findViewById(R.id.loPic2);
         loPic3 = (LinearLayout) v.findViewById(R.id.loPic3);
-        if (party2 != null)
+        if (party2 == null)
         {
             loPic2.setVisibility(View.INVISIBLE);
+        }
+        else
+        {
             tvPic2.setText(party2.getType() + " Document");
         }
         tvPic1.setText(party.getType() + " Document");
@@ -140,7 +143,7 @@ public class NotaryAddPTwo extends Fragment {
 
                 User userCompare = mojManager.findUserById(user.getId());
 
-                if(etPin.getText().toString().equals(userCompare.getServicePass())) {
+                if(etPin.getText().toString().equals(userCompare.getServicePass()) && !etPin.getText().toString().trim().equals(null)) {
                     if (!party.getImage1().equals("")) {
                         communicatorService.sendToStepThree(service, user, party, party2);
                     } else {
