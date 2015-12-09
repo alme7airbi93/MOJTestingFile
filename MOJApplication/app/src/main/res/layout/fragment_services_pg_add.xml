@@ -69,14 +69,34 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Party Type:"
                 android:id="@+id/textView227" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <Spinner
+        android:layout_weight="1"
+        style="@android:style/Widget.Spinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/spPartyTypeMan"
+        android:entries="@array/PType"
+        android:spinnerMode="dialog" />
+    <TextView
+        android:id="@+id/tvspPartyTypeManStar"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="@color/red"
+        android:textSize="30dp"/>
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ivspPartyTypeManTrue"
+        android:background="@drawable/trueicon"/>
+</LinearLayout>
 
-            <Spinner
-                style="@android:style/Widget.Spinner"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/spPartyTypeMan"
-                android:entries="@array/PType"
-                android:spinnerMode="dialog" />
 
             <TextView
                 android:textSize="15dp"
@@ -85,14 +105,34 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Identification Document"
                 android:id="@+id/textView12" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <Spinner
+        android:layout_weight="1"
+        style="@android:style/Widget.Spinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/spidDoc"
+        android:entries="@array/idDoc"
+        android:spinnerMode="dialog" />
+    <TextView
+        android:id="@+id/tvspIdDocStar"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="@color/red"
+        android:textSize="30dp"/>
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ivSpIdDocTrue"
+        android:background="@drawable/trueicon"/>
+</LinearLayout>
 
-            <Spinner
-                style="@android:style/Widget.Spinner"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/spidDoc"
-                android:entries="@array/idDoc"
-                android:spinnerMode="dialog" />
 
 
 
@@ -105,13 +145,34 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Name:"
                 android:id="@+id/tvnameaddparty" />
-
-            <EditText
-                android:layout_marginTop="10dp"
-                android:background="#fff"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:id="@+id/etNameAddPartyMan" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:id="@+id/etNameAddPartyMan" />
+                <TextView
+                    android:id="@+id/tvEtNameAddPartyManStar"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="30dp"/>
+                <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ivEtNameAddPartyManTrue"
+                    android:background="@drawable/trueicon"/>
+            </LinearLayout>
+
+
 
             <TextView
                 android:textSize="15dp"
@@ -120,14 +181,36 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Mobile:"
                 android:id="@+id/textView15" />
-
-            <EditText
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="#fff"
-                android:inputType="number"
-                android:ems="10"
-                android:id="@+id/etMobileAddPartyMan" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="#fff"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/etMobileAddPartyMan" />
+                <TextView
+                    android:id="@+id/tvEtMobileAddPartyManStar"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="30dp"/>
+                <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ivEtMobileAddPartyManTrue"
+                    android:background="@drawable/trueicon"/>
+
+            </LinearLayout>
+
+
 
             <TextView
                 android:textSize="15dp"
@@ -136,14 +219,34 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Address:"
                 android:id="@+id/textView16" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <EditText
+        android:layout_weight="1"
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/etAddressAddPartyMan"
+        android:hint="(e.g Abu Dhabi, defence Road)"
+        android:inputType="textMultiLine" />
+    <TextView
+        android:id="@+id/tvEtAddressAddPartyManStar"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="@color/red"
+        android:textSize="30dp"/>
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ivEtAddressAddPartyManTrue"
+        android:background="@drawable/trueicon"/>
+</LinearLayout>
 
-            <EditText
-                android:background="#fff"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:id="@+id/etAddressAddPartyMan"
-                android:hint="(e.g Abu Dhabi, defence Road)"
-                android:inputType="textMultiLine" />
 
 
         </LinearLayout>
@@ -165,14 +268,34 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Party Type:"
             android:id="@+id/textView7" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <Spinner
+        android:layout_weight="1"
+        style="@android:style/Widget.Spinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/spPartyType"
+        android:entries="@array/PType"
+        android:spinnerMode="dialog" />
+    <TextView
+        android:id="@+id/tvSpPartyTypeStar"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="@color/red"
+        android:textSize="30dp"/>
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ivSpPartyTypeTrue"
+        android:background="@drawable/trueicon"/>
+</LinearLayout>
 
-        <Spinner
-            style="@android:style/Widget.Spinner"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/spPartyType"
-            android:entries="@array/PType"
-            android:spinnerMode="dialog" />
 
         <TextView
             android:textSize="15dp"
@@ -181,13 +304,36 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Enter ID Card:"
             android:id="@+id/textView8" />
-
-        <EditText
-            android:layout_marginTop="10dp"
-            android:background="#fff"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:id="@+id/etNidCardAddParty" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:inputType="number"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:background="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/etNidCardAddParty" />
+            <TextView
+                android:id="@+id/tvEtNidCardAddPartyStar"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="30dp"/>
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ivNidCardPartyTrue"
+                android:background="@drawable/trueicon"/>
+
+        </LinearLayout>
+
+
 
         <TextView
             android:textSize="15dp"

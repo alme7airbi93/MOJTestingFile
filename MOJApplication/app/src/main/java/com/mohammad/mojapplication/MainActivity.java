@@ -345,6 +345,7 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
                 break;
             case 3:
                 i = new Intent(this, RegistrationActivity.class);
+                this.finish();
                 break;
         }
         if(i !=null)

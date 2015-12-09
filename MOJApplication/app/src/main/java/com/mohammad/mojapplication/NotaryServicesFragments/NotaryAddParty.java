@@ -7,12 +7,16 @@ import android.provider.MediaStore;
 import android.provider.Telephony;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -42,9 +46,11 @@ public class NotaryAddParty extends Fragment {
     private RadioGroup rbgParty;
     private RadioButton rbMan,rbId;
     private ScrollView scrollView;
-
-    private EditText etNameAddPartyMan,etAddMobileAddPartyMan,etAddresssAddPartyMan,
-                        etNIDCardAddParty;
+    private EditText etNameAddPartyMan,etAddMobileAddPartyMan,etAddresssAddPartyMan,etNIDCardAddParty;
+    private ImageView ivEtNameAddPartyManTrue,ivEtAddMobileAddPartyManTrue,ivEtAddressAddPartyManTrue,
+                      ivEtNidCardAddPartyTrue,ivSpPartyTypeManTrue,ivSpIdDocTrue,ivSpPartyTypeTrue;
+    private TextView tvEtNameAddPartyManStar,tvEtAddMobileAddPartyManStar,tvEtAddressAddPartyManStar,
+                     tvEtNidCardAddPartyStar,tvSpPartyTypeManStar,tvSpIdDocStar,tvSpPartyTypeStar;
     private int one, two,three,four;
     private String id = "";
     private Party party2;
@@ -70,22 +76,21 @@ public class NotaryAddParty extends Fragment {
 
     }
 
-
-
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mojManager = MOJManager.getMOJManager(getActivity());
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
-        View v = inflater.inflate(R.layout.fragment_services_pg_add, container, false);
-        communicatorService = (CommunicatorService) getActivity();
-
+    private View init(View v) {
+        ivSpPartyTypeManTrue = (ImageView) v.findViewById(R.id.ivspPartyTypeManTrue);
+        ivSpIdDocTrue = (ImageView) v.findViewById(R.id.ivSpIdDocTrue);
+        ivSpPartyTypeTrue = (ImageView) v.findViewById(R.id.ivSpPartyTypeTrue);
+        ivEtNameAddPartyManTrue = (ImageView) v.findViewById(R.id.ivEtNameAddPartyManTrue);
+        ivEtAddMobileAddPartyManTrue = (ImageView) v.findViewById(R.id.ivEtMobileAddPartyManTrue);
+        ivEtAddressAddPartyManTrue = (ImageView) v.findViewById(R.id.ivEtAddressAddPartyManTrue);
+        ivEtNidCardAddPartyTrue = (ImageView) v.findViewById(R.id.ivNidCardPartyTrue);
+        tvEtNameAddPartyManStar = (TextView) v.findViewById(R.id.tvEtNameAddPartyManStar);
+        tvEtAddMobileAddPartyManStar = (TextView) v.findViewById(R.id.tvEtMobileAddPartyManStar);
+        tvEtAddressAddPartyManStar = (TextView) v.findViewById(R.id.tvEtAddressAddPartyManStar);
+        tvEtNidCardAddPartyStar = (TextView) v.findViewById(R.id.tvEtNidCardAddPartyStar);
+        tvSpPartyTypeManStar = (TextView) v.findViewById(R.id.tvspPartyTypeManStar);
+        tvSpIdDocStar = (TextView) v.findViewById(R.id.tvspIdDocStar);
+        tvSpPartyTypeStar = (TextView) v.findViewById(R.id.tvSpPartyTypeStar);
         loAddById = (LinearLayout) v.findViewById(R.id.loAddById);
         spPartyType = (Spinner) v.findViewById(R.id.spPartyType);
         spIdDoc = (Spinner) v.findViewById(R.id.spidDoc);
@@ -100,6 +105,132 @@ public class NotaryAddParty extends Fragment {
         etNIDCardAddParty = (EditText) v.findViewById(R.id.etNidCardAddParty);
         btnAddParty = (Button) v.findViewById(R.id.btnAddtolist);
 
+        ivEtNameAddPartyManTrue.setVisibility(View.GONE);
+        ivEtAddMobileAddPartyManTrue.setVisibility(View.GONE);
+        ivEtAddressAddPartyManTrue.setVisibility(View.GONE);
+        ivEtNidCardAddPartyTrue.setVisibility(View.GONE);
+        ivSpPartyTypeManTrue.setVisibility(View.GONE);
+        ivSpIdDocTrue.setVisibility(View.GONE);
+        ivSpPartyTypeTrue.setVisibility(View.GONE);
+
+        return v;
+    }
+
+    private void validator() {
+        spPartyTypeMan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position != 0) {
+                    ivSpPartyTypeManTrue.setVisibility(View.VISIBLE);
+                    tvSpPartyTypeManStar.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+                spIdDoc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        if (position != 0) {
+                            ivSpIdDocTrue.setVisibility(View.VISIBLE);
+                            tvSpIdDocStar.setVisibility(View.GONE);
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+        spPartyType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position != 0) {
+                    ivSpPartyTypeTrue.setVisibility(View.VISIBLE);
+                    tvSpPartyTypeStar.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        etNameAddPartyMan.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.length() > 3) {
+                    ivEtNameAddPartyManTrue.setVisibility(View.VISIBLE);
+                    tvEtNameAddPartyManStar.setVisibility(View.GONE);
+                }
+            }
+        });
+                etAddMobileAddPartyMan.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {}
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        if (s.length() == 10) {
+                            ivEtAddMobileAddPartyManTrue.setVisibility(View.VISIBLE);
+                            tvEtAddMobileAddPartyManStar.setVisibility(View.GONE);
+                        }
+                    }
+                });
+        etAddresssAddPartyMan.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.length() > 6) {
+                    ivEtAddressAddPartyManTrue.setVisibility(View.VISIBLE);
+                    tvEtAddressAddPartyManStar.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        etNIDCardAddParty.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.length() == 15) {
+                    ivEtNidCardAddPartyTrue.setVisibility(View.VISIBLE);
+                    tvEtNidCardAddPartyStar.setVisibility(View.GONE);
+                }
+
+            }
+        });
+
+    }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mojManager = MOJManager.getMOJManager(getActivity());
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+        View v = inflater.inflate(R.layout.fragment_services_pg_add, container, false);
+        communicatorService = (CommunicatorService) getActivity();
+        init(v);
+        validator();
 
 
 

@@ -9,15 +9,13 @@
 
 
 <TextView
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:text="\tWELCOME TO MOJ APP"
     android:textSize="30dp"
     android:paddingTop="20dp"
     android:paddingBottom="20dp"
     android:textColor="#000"
-
-
     android:background="#72ffffff" />
     <TextView
         android:layout_marginTop="50dp"

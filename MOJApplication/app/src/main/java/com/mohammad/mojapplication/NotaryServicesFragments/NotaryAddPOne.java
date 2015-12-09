@@ -1,5 +1,6 @@
 package com.mohammad.mojapplication.NotaryServicesFragments;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.provider.Telephony;
 import android.support.annotation.Nullable;
@@ -8,10 +9,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mohammad.mojapplication.CommunicatorService;
@@ -29,14 +33,17 @@ import java.util.Random;
  */
 public class NotaryAddPOne extends Fragment {
 
-    Button btnFirstParty,btnSecondParty,btnNext;
-    Spinner spLoc, spDocType;
-    CommunicatorService communicatorService;
-    MOJManager mojManager;
-    Party party,party2;
-    int one, two;
-    LinearLayout loFirstParty, loSecondParty;
-    NotaryAddPOne notaryAddPOne;
+    private ImageView spLocationTrue,spDocTypeTrue,btnFirstPartyTrue,btnSecondPartyTrue;
+    private TextView tvSpLocationStar,tvSpDocTypeStar,tvBtnPartyStar,tvBtnParty2Star;
+    private Button btnFirstParty,btnSecondParty,btnNext;
+    private Spinner spLoc, spDocType;
+    private CommunicatorService communicatorService;
+    private MOJManager mojManager;
+    private Party party,party2;
+    private int one, two=0;
+    private LinearLayout loFirstParty, loSecondParty;
+    private NotaryAddPOne notaryAddPOne;
+    private boolean isTypeSelected,isLocationSelected = false;
 
 
 
@@ -59,6 +66,94 @@ public class NotaryAddPOne extends Fragment {
     }
 
 
+    private View init(View v) {
+
+        tvBtnParty2Star = (TextView) v.findViewById(R.id.tvBtnAddParty2Star);
+        tvBtnPartyStar = (TextView) v.findViewById(R.id.tvBtnAddPartyStar);
+        tvSpLocationStar = (TextView) v.findViewById(R.id.tvLocationStar);
+        tvSpDocTypeStar = (TextView) v.findViewById(R.id.tvDocTypeStar);
+        btnSecondPartyTrue = (ImageView) v.findViewById(R.id.btnAddParty2True);
+        btnFirstPartyTrue = (ImageView) v.findViewById(R.id.btnAddPartyTrue);
+        spLocationTrue = (ImageView) v.findViewById(R.id.spLocationTrue);
+        spDocTypeTrue = (ImageView) v.findViewById(R.id.spDocTypeTrue);
+        spLoc = (Spinner) v.findViewById(R.id.spLocation);
+        spDocType = (Spinner) v.findViewById(R.id.spDocType);
+        btnFirstParty = (Button) v.findViewById(R.id.btnAddParty);
+        btnSecondParty = (Button) v.findViewById(R.id.btnAddParty2);
+        btnNext = (Button) v.findViewById(R.id.btnServNextFirst);
+        loFirstParty = (LinearLayout) v.findViewById(R.id.loFirstParty);
+        loSecondParty = (LinearLayout) v.findViewById(R.id.loSecondParty);
+
+        spDocTypeTrue.setVisibility(View.GONE);
+        spLocationTrue.setVisibility(View.GONE);
+        btnFirstPartyTrue.setVisibility(View.GONE);
+        btnSecondPartyTrue.setVisibility(View.GONE);
+//        btnNext.setEnabled(false);
+
+
+        return v;
+    }
+
+    private void validator() {
+        if (party2 == null) {
+
+        }
+        else {
+            btnSecondPartyTrue.setVisibility(View.VISIBLE);
+            tvBtnParty2Star.setVisibility(View.GONE);
+        }
+
+        if (party == null) {
+            loSecondParty.setVisibility(View.GONE);
+        } else
+        {
+            loSecondParty.setVisibility(View.VISIBLE);
+            tvBtnPartyStar.setVisibility(View.GONE);
+            btnFirstPartyTrue.setVisibility(View.VISIBLE);
+        }
+
+        spLoc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+
+
+                } else {
+                    isLocationSelected =true;
+                    spLocationTrue.setVisibility(View.VISIBLE);
+                    tvSpLocationStar.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spDocType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+
+                } else {
+                    isLocationSelected = true;
+                    spDocTypeTrue.setVisibility(View.VISIBLE);
+                    tvSpDocTypeStar.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        if (isLocationSelected != false && isTypeSelected != false && party != null) {
+
+            btnNext.setEnabled(true);
+        }
+
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,25 +167,8 @@ public class NotaryAddPOne extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         View v = inflater.inflate(R.layout.fragment_services_pg_one, container, false);
         communicatorService = (CommunicatorService) getActivity();
-
-        spLoc = (Spinner) v.findViewById(R.id.spLocation);
-        spDocType = (Spinner) v.findViewById(R.id.spDocType);
-        btnFirstParty = (Button) v.findViewById(R.id.btnAddParty);
-        btnSecondParty = (Button) v.findViewById(R.id.btnAddParty2);
-        btnNext = (Button) v.findViewById(R.id.btnServNextFirst);
-        loFirstParty = (LinearLayout) v.findViewById(R.id.loFirstParty);
-        loSecondParty = (LinearLayout) v.findViewById(R.id.loSecondParty);
-        btnNext.setEnabled(false);
-
-        if(party == null)
-        {
-            loSecondParty.setVisibility(View.GONE);
-        }
-        else
-        {
-            btnNext.setEnabled(true);
-            loSecondParty.setVisibility(View.VISIBLE);
-        }
+        init(v);
+        validator();
 
 
         spLoc.setSelection(one);

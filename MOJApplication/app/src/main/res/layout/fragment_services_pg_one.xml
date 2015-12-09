@@ -50,17 +50,20 @@
         android:id="@+id/spLocation"
         android:entries="@array/emirates"
         android:spinnerMode="dialog" />
-    <ImageView
+    <TextView
+        android:id="@+id/tvLocationStar"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spLocationRequir" />
+        android:text="*"
+        android:textColor="@color/red"
+        android:textSize="30dp"/>
     <ImageView
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spLocationTrue"
-        android:background="@android:drawable/checkbox_on_background"/>
+        android:background="@drawable/trueicon"/>
 </LinearLayout>
 
 
@@ -81,27 +84,35 @@
             android:text="Chose Notary type: "
             android:id="@+id/textView2"
             android:textSize="15dp" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <Spinner
+                android:layout_weight="1"
                 style="@android:style/Widget.Spinner"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/spDocType"
                 android:entries="@array/NType"
                 android:spinnerMode="dialog" />
-            <ImageView
+            <TextView
+                android:id="@+id/tvDocTypeStar"
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/spDocTypeFalse"/>
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="30dp"/>
             <ImageView
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/spDocTypeTrue"/>
+                android:id="@+id/spDocTypeTrue"
+                android:background="@drawable/trueicon"/>
         </LinearLayout>
+
+
 
     </LinearLayout>
 
@@ -136,8 +147,22 @@
                 android:layout_toRightOf="@+id/linearLayout3"
                 android:layout_toEndOf="@+id/linearLayout3"
                />
-
             <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/tvBtnAddPartyStar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/red"
+                android:textSize="30dp"/>
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnAddPartyTrue"
+                android:background="@drawable/trueicon"/>
+            <TextView
+                android:textColor="@color/green"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -170,8 +195,22 @@
                     android:text="add party"
                     android:id="@+id/btnAddParty2"
                     />
-
                 <TextView
+                    android:layout_marginTop="3dp"
+                    android:id="@+id/tvBtnAddParty2Star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="o"
+                    android:textColor="@color/common_signin_btn_default_background"
+                    android:textSize="30dp"/>
+                <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnAddParty2True"
+                    android:background="@drawable/trueicon"/>
+                <TextView
+                    android:textColor="@color/green"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
