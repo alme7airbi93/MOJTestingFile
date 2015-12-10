@@ -28,6 +28,7 @@
         <EditText
             android:background="#fff"
             android:layout_width="match_parent"
+            android:maxLength="15"
             android:layout_height="30dp"
             android:inputType="number"
             android:id="@+id/etNID"

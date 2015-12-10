@@ -5,7 +5,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="20dp"
-        android:background="#07000000">
+        android:background="@drawable/backgroundoriginal">
 
     <TextView
         android:textSize="20dp"
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="100dp"
         android:gravity="center"
         android:id="@+id/linearLayout4">
 
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Pin Code:"
+            android:text="Enter Your Pin Code:"
             android:id="@+id/textView5"
 
             />
@@ -48,8 +48,9 @@
             android:background="#fff"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:inputType="number"
+            android:inputType="numberPassword"
             android:ems="10"
+            android:maxLength="4"
             android:id="@+id/etPinServ"
             android:layout_marginTop="10dp"/>
 

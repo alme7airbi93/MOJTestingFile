@@ -26,6 +26,7 @@
             android:background="#fff"
             android:layout_width="match_parent"
             android:layout_height="30dp"
+            android:maxLength="4"
             android:id="@+id/etTransPass"
             android:layout_below="@+id/tvUser"
             android:inputType="numberPassword"/>

@@ -5,7 +5,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="20dp"
-        android:background="#07000000">
+        android:background="@drawable/backgroundoriginal">
 
 
     <TextView
@@ -24,7 +24,7 @@
         android:background="@color/black"/>
 
     <LinearLayout
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="70dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Adding a party: "
+            android:text="Adding a party:"
             android:id="@+id/textView3"
             android:textSize="15dp" />
 
@@ -141,7 +141,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add Party"
+                android:text="First party"
                 android:id="@+id/btnAddParty"
                 android:layout_alignBottom="@+id/linearLayout3"
                 android:layout_toRightOf="@+id/linearLayout3"
@@ -160,39 +160,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnAddPartyTrue"
-                android:background="@drawable/trueicon"/>
-            <TextView
-                android:textColor="@color/green"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/tvFirParty" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/loSecondParty"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Adding second party(optional) :"
-                android:id="@+id/textView44"
-                android:textSize="15dp"
-                 />
-
+                android:background="@drawable/trueicon"
+                />
             <LinearLayout
+                android:layout_marginLeft="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/loSecondParty"
                 android:orientation="horizontal">
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="add party"
+                    android:text="second party"
                     android:id="@+id/btnAddParty2"
                     />
                 <TextView
@@ -218,9 +197,9 @@
 
             </LinearLayout>
 
-
-
         </LinearLayout>
+
+
 
 
     </LinearLayout>

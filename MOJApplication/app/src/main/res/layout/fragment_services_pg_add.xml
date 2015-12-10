@@ -5,7 +5,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="20dp"
-        android:background="#07000000"
+        android:background="@drawable/backgroundoriginal"
     >
 
     <TextView
@@ -315,6 +315,7 @@
                 android:background="#fff"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:maxLength="15"
                 android:id="@+id/etNidCardAddParty" />
             <TextView
                 android:id="@+id/tvEtNidCardAddPartyStar"

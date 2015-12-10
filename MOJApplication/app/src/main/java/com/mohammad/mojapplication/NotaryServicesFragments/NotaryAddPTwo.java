@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,15 +30,16 @@ import com.mohammad.mojapplication.R;
 public class NotaryAddPTwo extends Fragment {
 
 
-    EditText etPin;
-    Button btnNext,btnPic1,btnPic2,btnPic3;
-    LinearLayout lopic1,loPic2,loPic3;
-    TextView tvPic1,tvPic2,tvPic3;
-    MOJManager mojManager;
-    Party party,party2;
-    Service service;
-    User user;
-    CommunicatorService communicatorService;
+   private EditText etPin;
+   private Button btnNext,btnPic1,btnPic2,btnPic3;
+    private LinearLayout lopic1,loPic2,loPic3;
+    private TextView tvBtnPic1Star, tvBtnPic2Star,tvBtnPic3Star;
+    private ImageView ivBtnPic1Check,ivBtnPic2Check,ivBtnPic3Check;
+    private MOJManager mojManager;
+    private Party party,party2;
+    private Service service;
+    private User user;
+    private CommunicatorService communicatorService;
     private Uri selectedImage;
     private String imageString;
 
@@ -64,9 +66,13 @@ public class NotaryAddPTwo extends Fragment {
 
         communicatorService = (CommunicatorService) getActivity();
 
-        tvPic1 = (TextView) v.findViewById(R.id.tvPic1);
-        tvPic2 = (TextView) v.findViewById(R.id.tvPic2);
-        tvPic3 = (TextView) v.findViewById(R.id.tvPic3);
+        tvBtnPic1Star = (TextView) v.findViewById(R.id.tvBtnPicStar1);
+        tvBtnPic2Star = (TextView) v.findViewById(R.id.tvBtnPicStar2);
+        tvBtnPic3Star = (TextView) v.findViewById(R.id.tvBtnPicStar3);
+        ivBtnPic1Check = (ImageView) v.findViewById(R.id.ivbtnPic1True);
+        ivBtnPic2Check = (ImageView) v.findViewById(R.id.ivbtnPic2True);
+        ivBtnPic3Check = (ImageView) v.findViewById(R.id.ivbtnPicTrue3);
+
         etPin = (EditText) v.findViewById(R.id.etPinServ);
         btnPic1 = (Button) v.findViewById(R.id.btnPic1);
         btnPic2 = (Button) v.findViewById(R.id.btnPic2);
@@ -74,17 +80,21 @@ public class NotaryAddPTwo extends Fragment {
         lopic1 = (LinearLayout) v.findViewById(R.id.loPic1);
         loPic2 = (LinearLayout) v.findViewById(R.id.loPic2);
         loPic3 = (LinearLayout) v.findViewById(R.id.loPic3);
+        ivBtnPic1Check.setVisibility(View.GONE);
+        ivBtnPic2Check.setVisibility(View.GONE);
+        ivBtnPic3Check.setVisibility(View.GONE);
+
         if (party2 == null)
         {
-            loPic2.setVisibility(View.INVISIBLE);
+            loPic2.setVisibility(View.GONE);
         }
         else
         {
-            tvPic2.setText(party2.getType() + " Document");
+            btnPic2.setText(party2.getType() + " Document");
         }
-        tvPic1.setText(party.getType() + " Document");
+        btnPic1.setText(party.getType() + " Document");
 
-        tvPic3.setText(service.getType() + " Document");
+        btnPic3.setText(service.getType() + " Document");
 
         btnPic1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,18 +108,7 @@ public class NotaryAddPTwo extends Fragment {
                 startActivityForResult(i, 111);
             }
         });
-        btnPic1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-
-//                communicatorService.PartyToCam(one,two,spPartyType.getSelectedItemPosition(),etNIDCardAddParty.getText().toString());
-                Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-
-                startActivityForResult(i, 222);
-            }
-        });
         btnPic2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,7 +118,7 @@ public class NotaryAddPTwo extends Fragment {
                 Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
 
-                startActivityForResult(i, 333);
+                startActivityForResult(i, 222);
             }
         });
         btnPic3.setOnClickListener(new View.OnClickListener() {
@@ -143,19 +142,15 @@ public class NotaryAddPTwo extends Fragment {
 
                 User userCompare = mojManager.findUserById(user.getId());
 
-                if(etPin.getText().toString().equals(userCompare.getServicePass()) && !etPin.getText().toString().trim().equals(null)) {
+
                     if (!party.getImage1().equals("")) {
                         communicatorService.sendToStepThree(service, user, party, party2);
                     } else {
-                        tvPic1.setText("Required Image");
-                        tvPic1.setTextColor(Color.RED);
+
                     }
 
-                }
-                else
-                {
-                    Toast.makeText(getActivity(), "Wrong Pin", Toast.LENGTH_SHORT).show();
-                }
+
+
 
 
             }
@@ -174,7 +169,8 @@ public class NotaryAddPTwo extends Fragment {
         if(requestCode == 111 && resultCode == -1&& data != null)
         {
             selectedImage = data.getData();
-            tvPic1.setText("Picture Attached");
+            ivBtnPic1Check.setVisibility(View.VISIBLE);
+            tvBtnPic1Star.setVisibility(View.GONE);
             imageString = selectedImage.toString();
             party.setImage1(imageString);
         }
@@ -182,7 +178,8 @@ public class NotaryAddPTwo extends Fragment {
         if(requestCode == 222 && resultCode == -1&& data != null)
         {
             selectedImage = data.getData();
-            tvPic2.setText("Picture Attached");
+            ivBtnPic2Check.setVisibility(View.VISIBLE);
+            tvBtnPic2Star.setVisibility(View.GONE);
             imageString = selectedImage.toString();
             party2.setImage1(imageString);
         }
@@ -190,7 +187,8 @@ public class NotaryAddPTwo extends Fragment {
         if(requestCode == 333 && resultCode == -1&& data != null)
         {
             selectedImage = data.getData();
-            tvPic3.setText("Picture Attached");
+            ivBtnPic3Check.setVisibility(View.VISIBLE);
+            tvBtnPic3Star.setVisibility(View.GONE);
             imageString = selectedImage.toString();
 
         }

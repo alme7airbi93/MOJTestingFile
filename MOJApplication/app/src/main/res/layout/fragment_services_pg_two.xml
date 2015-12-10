@@ -5,7 +5,7 @@
         android:layout_height="match_parent"
         android:padding="20dp"
         android:orientation="vertical"
-        android:background="#07000000">
+        android:background="@drawable/backgroundoriginal">
 
     <TextView
         android:textSize="20dp"
@@ -31,6 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/loPic1"
+        android:layout_marginTop="80dp"
         android:orientation="horizontal" >
 
         <Button
@@ -41,15 +42,20 @@
             android:id="@+id/btnPic1" />
 
         <TextView
-            android:textSize="15dp"
-            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:id="@+id/tvBtnPicStar1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text=""
-            android:id="@+id/tvPic1"
-            android:layout_below="@+id/linearLayout3"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:text="*"
+            android:textColor="@color/red"
+            android:textSize="30dp"/>
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivbtnPic1True"
+            android:background="@drawable/trueicon"
+            />
 
     </LinearLayout>
 
@@ -57,6 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/loPic2"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal" >
 
         <Button
@@ -65,17 +72,21 @@
             android:layout_height="wrap_content"
             android:text="Browse..."
             android:id="@+id/btnPic2" />
-
         <TextView
-            android:textSize="15dp"
-            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:id="@+id/tvBtnPicStar2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text=""
-            android:id="@+id/tvPic2"
-            android:layout_below="@+id/linearLayout3"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:text="*"
+            android:textColor="@color/red"
+            android:textSize="30dp"/>
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivbtnPic2True"
+            android:background="@drawable/trueicon"
+            />
 
     </LinearLayout>
 
@@ -83,6 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/loPic3"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal" >
 
         <Button
@@ -92,16 +104,22 @@
             android:text="Browse..."
             android:id="@+id/btnPic3" />
 
+
         <TextView
-            android:textSize="15dp"
-            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:id="@+id/tvBtnPicStar3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text=""
-            android:id="@+id/tvPic3"
-            android:layout_below="@+id/linearLayout3"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:text="*"
+            android:textColor="@color/red"
+            android:textSize="30dp"/>
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivbtnPicTrue3"
+            android:background="@drawable/trueicon"
+            />
 
     </LinearLayout>
 
