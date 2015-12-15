@@ -50,8 +50,8 @@ public class RegStepOne extends Fragment {
         // initialzing communicator
         communicator = (Communicator) getActivity();
 
-//        NIDCard user= new NIDCard("789199312345678", "Mohammad", "0503151445", "AD", new Date());
-//        mojManager.addNIDCard(user);
+        NIDCard nid= new NIDCard("99", "Mohammad", "0503151445", "AD", new Date());
+        mojManager.addNIDCard(nid);
 
         NIDCard user= new NIDCard("784199553043524", "Ali AlZaabi", "0566201995", "AD", new Date());
         mojManager.addNIDCard(user);
@@ -59,11 +59,11 @@ public class RegStepOne extends Fragment {
         mojManager.addNIDCard(usere);
         NIDCard usere2= new NIDCard("111111111111111", "Hamad AlZaabi", "0566201995", "DXB", new Date());
         mojManager.addNIDCard(usere2);
-        NIDCard usere3= new NIDCard("222222222222222", "Mohammed AlZaabi", "0561234567", "SHJ", new Date());
+        NIDCard usere3= new NIDCard("784198553053022", "Abu Humaid", "0566201995", "AD", new Date());
         mojManager.addNIDCard(usere3);
-        NIDCard usere9= new NIDCard("999999999999999", "Khalifa AlZaabi", "0507322290", "SHJ", new Date());
+        NIDCard usere9= new NIDCard("784199095395333", "Majid", "0566201995", "AD", new Date());
         mojManager.addNIDCard(usere9);
-        NIDCard usere4= new NIDCard("333333333333333", "Saoud AlZaabi", "0551234567", "RAK", new Date());
+        NIDCard usere4= new NIDCard("333333333333333", "Saoud AlZaabi", "0566201995", "RAK", new Date());
         mojManager.addNIDCard(usere4);
         NIDCard user2= new NIDCard("1", "Saif AlZaabi", "0566201995", "AD", new Date());
         mojManager.addNIDCard(user2);
@@ -79,7 +79,7 @@ public class RegStepOne extends Fragment {
             public void onClick(View v) {
                 if(etID.getText().toString().length() == 15) {
 
-                Toast.makeText(getActivity(),"Added",Toast.LENGTH_LONG).show();
+
                       communicator.sendData(etID.getText().toString());
 
                 }else

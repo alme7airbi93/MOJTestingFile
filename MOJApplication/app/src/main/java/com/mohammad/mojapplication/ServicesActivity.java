@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+import com.mohammad.mojapplication.NotaryServicesFragments.NotaryAddPFour;
 import com.mohammad.mojapplication.NotaryServicesFragments.NotaryAddPOne;
 import com.mohammad.mojapplication.NotaryServicesFragments.NotaryAddPThree;
 import com.mohammad.mojapplication.NotaryServicesFragments.NotaryAddPTwo;
@@ -80,6 +81,18 @@ public class ServicesActivity extends AppCompatActivity implements CommunicatorS
     }
 
     @Override
+    public void sendToStepFour(Service service, User user, Party party, Party party2) {
+        NotaryAddPFour notaryAddPFour = new NotaryAddPFour();
+        notaryAddPFour.receiveUser(service, user, party,party2);
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.servicesActivityLayout, notaryAddPFour, "NPF");
+        transaction.commit();
+        stopStepThree();
+    }
+
+
+
+    @Override
     public void sendToAdd(int one,int two) {
         NotaryAddParty notaryAddParty = new NotaryAddParty();
         notaryAddParty.receiveExtra(one, two);
@@ -95,7 +108,7 @@ public class ServicesActivity extends AppCompatActivity implements CommunicatorS
         NotaryAddParty notaryAddParty = new NotaryAddParty();
         notaryAddParty.receiveExtraSecond(party, one, two);
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.servicesActivityLayout, notaryAddParty, "NAP");
+        transaction.add(R.id.servicesActivityLayout, notaryAddParty, "NAP2");
         transaction.commit();
 
         stopStepOne();
@@ -146,6 +159,16 @@ public class ServicesActivity extends AppCompatActivity implements CommunicatorS
     }
 
     @Override
+    public void stopStepThree() {
+        NotaryAddPThree notaryAddPThree = (NotaryAddPThree) manager.findFragmentByTag("NPTH");
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.remove(notaryAddPThree);
+        transaction.commit();
+    }
+
+
+
+    @Override
     public void stopStepAdd() {
         NotaryAddParty notaryAddParty = (NotaryAddParty) manager.findFragmentByTag("NAP");
         FragmentTransaction transaction = manager.beginTransaction();
@@ -153,22 +176,15 @@ public class ServicesActivity extends AppCompatActivity implements CommunicatorS
         transaction.commit();
     }
 
-    @Override
-    public void startSignature(String id,String serviceID) {
-        Intent i = new Intent(ServicesActivity.this, DrawingActivity.class);
-
-        i.putExtra("serviceID", serviceID);
-        i.putExtra("userID", getIntent().getStringExtra("userID"));
-        startActivity(i);
-        this.finish();
-    }
 
 
 
     @Override
     public void backtoMain(String userid) {
+
         Intent i = new Intent(this, MainActivity.class);
         i.putExtra("userID", user.getId().toString());
+
         startActivity(i);
         this.finish();
     }

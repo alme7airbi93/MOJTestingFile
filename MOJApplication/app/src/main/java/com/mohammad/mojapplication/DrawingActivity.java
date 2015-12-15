@@ -8,6 +8,7 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.SmsManager;
 import android.util.AttributeSet;
 import android.view.View;
 import android.content.Context;
@@ -22,7 +23,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import com.mohammad.mojapplication.Objects.NIDCard;
+import com.mohammad.mojapplication.Objects.Party;
 import com.mohammad.mojapplication.Objects.Service;
+import com.mohammad.mojapplication.Objects.User;
 
 import java.util.Random;
 
@@ -62,13 +66,21 @@ public class DrawingActivity extends AppCompatActivity{
                 i.putExtra("userID", getIntent().getStringExtra("userID"));
 
                 Service service = mojManager.findServiceById(getIntent().getStringExtra("serviceID"));
-                service.setServiceStatus("Waiting Approval...");
+                service.setServiceStatus("Approved Waiting Payment");
 
                 mojManager.updateService(service);
 
                 drawingV.setDrawingCacheEnabled(true);
                 saveImage();
                 drawingV.destroyDrawingCache();
+
+                User user = mojManager.findUserById(DrawingActivity.this.getIntent().getStringExtra("userID"));
+                SmsManager manager =SmsManager.getDefault();
+                String mobile = user.getMobile();
+                String msg = "Dear, " + user.getName() + " your " + service.getType()
+                        + " with reference no." + service.getServiceID() + " document is waiting payment";
+                manager.sendTextMessage(mobile, null, msg, null, null);
+
                 startActivity(i);
                 DrawingActivity.this.finish();
             }

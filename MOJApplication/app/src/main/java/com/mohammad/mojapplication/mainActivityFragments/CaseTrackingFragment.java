@@ -29,6 +29,7 @@ import com.mohammad.mojapplication.MOJManager;
 import com.mohammad.mojapplication.MainActivity;
 import com.mohammad.mojapplication.Objects.Service;
 import com.mohammad.mojapplication.Objects.User;
+import com.mohammad.mojapplication.PaymentActivity;
 import com.mohammad.mojapplication.R;
 
 import java.util.ArrayList;
@@ -81,13 +82,17 @@ public class CaseTrackingFragment extends Fragment implements SwipeRefreshLayout
             Service service = servicesAdapter.getItem(position);
 
 
-            Toast.makeText(getActivity(), service.getUserID(), Toast.LENGTH_SHORT).show();
 
-            if (service.getServiceStatus().equals("Signature")) {
+            if (service.getServiceStatus().equals("Approved Needs Signature")) {
                 communicator.startSignature(getActivity().getIntent().getStringExtra("userID"),service.getServiceID());
             }
-              if (service.getServiceStatus().equals("Approved")) {
-                  Toast.makeText(getActivity(), "Wait for Delivery", Toast.LENGTH_SHORT).show();
+              if (service.getServiceStatus().equals("Approved Waiting Payment")) {
+
+                  Intent i = new Intent(getActivity(), PaymentActivity.class);
+                  i.putExtra("userID", getActivity().getIntent().getStringExtra("userID"));
+
+                  startActivity(i);
+
             }
               if (service.getServiceStatus().equals("Decline")) {
                   Toast.makeText(getActivity(), "Open New Case", Toast.LENGTH_SHORT).show();

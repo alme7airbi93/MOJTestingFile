@@ -16,8 +16,11 @@ public class Service {
     private String partyID1;
     private String partyID2;
     private String loc;
+    private String notary;
 
-    public Service(String userID, String type, String serviceID, Date date,String serviceStatus,String partyID1,String partyID2,String loc) {
+    public Service(String userID, String type, String serviceID,
+                   Date date,String serviceStatus,String partyID1,
+                   String partyID2,String loc,String notary) {
         this.userID = userID;
         this.type = type;
         this.serviceID = serviceID;
@@ -26,7 +29,15 @@ public class Service {
         this.partyID1 = partyID1;
         this.partyID2 = partyID2;
         this.loc = loc;
+        this.notary = notary;
+    }
 
+    public String getNotary() {
+        return notary;
+    }
+
+    public void setNotary(String notary) {
+        this.notary = notary;
     }
 
     public String getLoc() {

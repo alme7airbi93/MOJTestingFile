@@ -21,6 +21,7 @@ public class Party {
 
 
 
+
     public Party(String partyID, String fName, String type, String mobile, String address,String image1) {
         this.partyID = partyID;
         this.fName = fName;

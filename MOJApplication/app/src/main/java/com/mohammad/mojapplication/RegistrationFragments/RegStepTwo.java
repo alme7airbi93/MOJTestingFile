@@ -1,6 +1,8 @@
 package com.mohammad.mojapplication.RegistrationFragments;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.telephony.SmsManager;
@@ -15,6 +17,7 @@ import com.mohammad.mojapplication.Communicator;
 import com.mohammad.mojapplication.MOJManager;
 import com.mohammad.mojapplication.Objects.NIDCard;
 import com.mohammad.mojapplication.R;
+import com.mohammad.mojapplication.RegistrationActivity;
 
 import java.util.Random;
 
@@ -55,6 +58,7 @@ public class RegStepTwo extends Fragment {
         int rand  = ran.nextInt(99999 - 91111) +91111;
         randomNumber = rand +"";
 
+
         SmsManager manager =SmsManager.getDefault();
         manager.sendTextMessage(mobile,null,randomNumber,null,null);
 
@@ -66,13 +70,13 @@ public class RegStepTwo extends Fragment {
                     communicator.sendNIDcardObject(nidCard);
                 }
                 else {
-                    Toast.makeText(getActivity(), "Write the code !", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Incorrect code or Code Expired", Toast.LENGTH_LONG).show();
                 }
             }
         });
 
 
-
+        OTP();
         return v;
     }
 
@@ -83,6 +87,25 @@ public class RegStepTwo extends Fragment {
 
 
 
+    }
+
+    public void OTP() {
+        new Handler().postDelayed(new Runnable() {
+
+
+            @Override
+            public void run() {
+
+                Random ran = new Random();
+                int rand  = ran.nextInt(99999 - 91111) +91111;
+                randomNumber = rand + "";
+            }
+
+            private void finish() {
+
+
+            }
+        }, 45000);
     }
 
 

@@ -28,6 +28,7 @@ import android.widget.Toast;
 import com.mohammad.mojapplication.Communicator;
 import com.mohammad.mojapplication.CommunicatorService;
 import com.mohammad.mojapplication.MOJManager;
+import com.mohammad.mojapplication.Objects.NIDCard;
 import com.mohammad.mojapplication.Objects.Party;
 import com.mohammad.mojapplication.Objects.User;
 import com.mohammad.mojapplication.R;
@@ -281,13 +282,13 @@ public class NotaryAddParty extends Fragment {
                     }
                     else
                     {
-                        user = mojManager.findUserById(getActivity().getIntent().getStringExtra("userID"));
+                        NIDCard nidCard = mojManager.findNIDCardById(etNIDCardAddParty.getText().toString());
 
                         Random ran = new Random();
                         int randID = ran.nextInt(999999 - 91111) + 91111;
 
-                        Party party = new Party(randID + "", user.getName(), spPartyType.getSelectedItem().toString()
-                                , user.getMobile(), user.getAddress(), "");
+                        Party party = new Party(randID + "", nidCard.getName(), spPartyType.getSelectedItem().toString()
+                                , nidCard.getMobile(), nidCard.getAddress(), "");
                         if(party2 == null)
                         {
                             communicatorService.backFromAdd(party,one,two);
@@ -322,13 +323,13 @@ public class NotaryAddParty extends Fragment {
                             }
                             else
                             {
-                                user = mojManager.findUserById(getActivity().getIntent().getStringExtra("userID"));
+                                NIDCard nidCard = mojManager.findNIDCardById(etNIDCardAddParty.getText().toString());
 
                                 Random ran = new Random();
                                 int randID = ran.nextInt(999999 - 91111) + 91111;
 
-                                Party party = new Party(randID + "", user.getName(), spPartyType.getSelectedItem().toString()
-                                        , user.getMobile(), user.getAddress(), "");
+                                Party party = new Party(randID + "", nidCard.getName(), spPartyType.getSelectedItem().toString()
+                                        , nidCard.getMobile(), nidCard.getAddress(), "");
                                 if(party2 == null)
                                 {
                                     communicatorService.backFromAdd(party,one,two);

@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Page 3 of 4"
+        android:text="Page 4 of 4"
         android:id="@+id/tvPage"
         />
     <LinearLayout
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:id="@+id/linearLayout4">
 
@@ -39,20 +39,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Enter SMS OTP(One Time Pin):"
+            android:text="Edit Notary Document:"
             android:id="@+id/textView5"
 
             />
 
         <EditText
-            android:background="#fff"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:inputType="number"
+            android:layout_height="340dp"
+            android:inputType="textMultiLine"
             android:ems="10"
-            android:maxLength="5"
-            android:id="@+id/etPinServ"
-            android:layout_marginTop="10dp"/>
+            android:background="#FFF"
+            android:scrollbars="vertical"
+            android:id="@+id/etNotary" />
+
 
     </LinearLayout>
 
@@ -113,7 +113,7 @@
     <!--</LinearLayout>-->
 
     <Button
-        android:layout_marginTop="40dp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit"

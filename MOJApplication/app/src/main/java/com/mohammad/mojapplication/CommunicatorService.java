@@ -15,16 +15,22 @@ public interface CommunicatorService {
 
     public void sendToStepTwo(Service service,User user,Party party,Party party2);
     public void sendToStepThree(Service service,User user,Party party,Party party2);
+    public void sendToStepFour(Service service,User user,Party party,Party party2);
+
 
     public void sendToAdd(int one,int two);
     public void sendToAddTwo(Party party,int one,int two);
 
     public void backFromAdd(Party party,int one, int two);
     public void backFromAddTwo(Party party,Party party2,int one, int two);
-    public void startSignature(String id,String serviceID);
+
+
     public void stopStepOne();
     public void stopStepTwo();
+    public void stopStepThree();
+
     public void stopStepAdd();
+
 
 
     public void backtoMain(String userid);

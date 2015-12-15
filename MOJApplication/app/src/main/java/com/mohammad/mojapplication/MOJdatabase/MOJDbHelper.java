@@ -50,7 +50,8 @@ public class MOJDbHelper extends SQLiteOpenHelper
                 MOJDbSchema.ServiceTable.Cols.SERVICESTATUS + ","+
                 MOJDbSchema.ServiceTable.Cols.PARTYID1 + ","+
                 MOJDbSchema.ServiceTable.Cols.PARTYID2 + ","+
-                MOJDbSchema.ServiceTable.Cols.LOCATION +")");
+                MOJDbSchema.ServiceTable.Cols.LOCATION + ","+
+                MOJDbSchema.ServiceTable.Cols.NOTARY +")");
 
 
         db.execSQL("create table "+ MOJDbSchema.PartyTable.NAME+"(_id integer primary key autoincrement,"+
@@ -60,6 +61,10 @@ public class MOJDbHelper extends SQLiteOpenHelper
                 MOJDbSchema.PartyTable.Cols.MOBILE+","+
                 MOJDbSchema.PartyTable.Cols.ADDRESS+","+
                 MOJDbSchema.PartyTable.Cols.IMAGE1 +")");
+
+        db.execSQL("create table "+ MOJDbSchema.NotaryTemplateTable.NAME+"(_id integer primary key autoincrement,"+
+                MOJDbSchema.NotaryTemplateTable.Cols.NOTARY+ ","  +
+                MOJDbSchema.NotaryTemplateTable.Cols.TYPE +")");
     }
 
 

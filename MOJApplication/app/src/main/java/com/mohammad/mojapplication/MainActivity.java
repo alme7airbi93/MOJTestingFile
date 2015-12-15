@@ -18,6 +18,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.KeyEvent;
@@ -33,6 +34,8 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mohammad.mojapplication.Objects.NIDCard;
+import com.mohammad.mojapplication.Objects.Party;
 import com.mohammad.mojapplication.Objects.Service;
 import com.mohammad.mojapplication.Objects.User;
 import com.mohammad.mojapplication.mainActivityFragments.CaseTrackingFragment;
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
     private ViewPager viewPager;
     private ViewPagerAdapter viewPagerAdapter;
     private int f = 0;
+    private MainActivity mainActivity =this;
 
     NewsFragment newsFragment = new NewsFragment();
     ServicesFragments servicesFragments = new ServicesFragments();
@@ -97,6 +101,19 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
         setContentView(R.layout.activity_main);
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.headerLayout);
 
+//        try {
+//            String mb = getIntent().getStringExtra("mb");
+//            String smg = getIntent().getStringExtra("bodyText");
+//            if (!mb.equals(null)) {
+//
+//                SmsManager manager =SmsManager.getDefault();
+//                manager.sendTextMessage(mb, null, smg, null, null);
+//
+//            }
+//        } catch (NullPointerException npe) {
+//
+//        }
+
 
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,10 +138,34 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
                         public void onClick(View v) {
 
 
-                            Service service = mojManager.findServiceById(etRef.getText().toString());
-                            service.setServiceStatus("Approved");
-                            mojManager.updateService(service);
-                            dialog.dismiss();
+                                Service service = mojManager.findServiceById(etRef.getText().toString());
+
+                                SmsManager manager = SmsManager.getDefault();
+                                Toast.makeText(MainActivity.this, service.getServiceID() + service.getPartyID1(), Toast.LENGTH_SHORT).show();
+                                User user = mojManager.findUserById(mainActivity.getIntent().getStringExtra("userID"));
+
+                                Party party = mojManager.findpartyById(service.getPartyID1());
+                                String mobile = user.getMobile();
+                                String msg = "Dear, " + user.getName() + " your " + service.getType()
+                                        + " with reference no." + service.getServiceID() + " document request has " +
+                                        " is being delivered";
+
+
+                                String mobile2 = party.getMobile();
+                            Log.d("12312312", mobile2);
+                            Log.d("12312312", mobile);
+                                String msg2 = "Dear," + party.getfName() + " " +
+                                        " the notary document that gives you " + service.getType() + " by " + user.getName() +
+                                        " has finished";
+                                manager.sendTextMessage(mobile, null, msg, null, null);
+                                manager.sendTextMessage(mobile2, null, msg2, null, null);
+
+                                service.setServiceStatus("Approved Waiting Payment");
+                                mojManager.updateService(service);
+
+
+                                dialog.dismiss();
+
 
                         }
                     });
@@ -132,11 +173,21 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
                         @Override
                         public void onClick(View v) {
 
+                            try {
+                                Service service = mojManager.findServiceById(etRef.getText().toString());
+                                service.setServiceStatus("Decline");
+                                mojManager.updateService(service);
+                                User user = mojManager.findUserById(service.getUserID());
+                                SmsManager manager = SmsManager.getDefault();
+                                String mobile = user.getMobile();
+                                String msg = "Dear, " + user.getName() + " your " + service.getType()
+                                        + " with reference no." + service.getServiceID() + " document has been declined ";
+                                manager.sendTextMessage(mobile, null, msg, null, null);
+                                dialog.dismiss();
+                            }
+                            catch (NullPointerException npe) {
 
-                            Service service = mojManager.findServiceById(etRef.getText().toString());
-                            service.setServiceStatus("Decline");
-                            mojManager.updateService(service);
-                            dialog.dismiss();
+                            }
 
                         }
                     });
@@ -144,11 +195,23 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
                         @Override
                         public void onClick(View v) {
 
+                            try {
+                                Service service = mojManager.findServiceById(etRef.getText().toString());
+                                service.setServiceStatus("Approved Needs Signature");
+                                mojManager.updateService(service);
+                                User user = mojManager.findUserById(service.getUserID());
+                                SmsManager manager = SmsManager.getDefault();
+                                String mobile = user.getMobile();
+                                String msg = "Dear, " + user.getName() + " your " + service.getType()
+                                        + " with reference no." + service.getServiceID() + " document is waiting your signature ";
+                                manager.sendTextMessage(mobile, null, msg, null, null);
+                                dialog.dismiss();
+                            } catch (NullPointerException npe) {
 
-                            Service service = mojManager.findServiceById(etRef.getText().toString());
-                            service.setServiceStatus("Signature");
-                            mojManager.updateService(service);
-                            dialog.dismiss();
+                            }
+
+
+
 
                         }
                     });
@@ -189,7 +252,7 @@ public class MainActivity extends AppCompatActivity implements CommunicatorMain,
 
         mojManager = MOJManager.getMOJManager(this);
         userName = this.getIntent().getStringExtra("userID");
-        Toast.makeText(MainActivity.this, userName, Toast.LENGTH_SHORT).show();
+
 
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)

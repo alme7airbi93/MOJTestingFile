@@ -39,6 +39,10 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name=".PaymentActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name=".DrawingActivity"
             android:screenOrientation="portrait" >
         </activity>

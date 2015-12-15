@@ -12,19 +12,38 @@
         <item>Al Fujairah</item>
     </array>
 
-    <array name="NType">
-        <item>Select service type...</item>
-        <item>legal</item>
-        <item>financial</item>
-        <item>stock</item>
-        <item>vehicle</item>
+    <array name="NType"
+        id="ntypeL">
+        <item>Limited Power of Attorney to Act and Manage a Vehicle \n</item>
+        <item>Limited Power of Attorney for Cases \n</item>
+        <item>Limited Power of Attorney for Establishing a Limited Liability Company \n</item>
+        <item>Limited Power of Attorney for IPO (Initial Public Offering ) Subscription Shares and Deal in Them \n</item>
+        <item>Limited Power of Attorney for Management, Supervision and Disposition of Property \n</item>
+        <item>Limited Power of Attorney for Receive and Delivery of Transactions \n</item>
+        <item>Limited Power of Attorney for Supervision, Management and Act in Individual Business Facility \n</item>
+        <item>Limited Power of Attorney from a Limited Liability Company for Management and Supervision and to Act \n</item>
+        <item>Limited Power of Attorney in Order to Obtain a Commercial License \n</item>
+        <item>Limited Power of Attorney on Supervision and Management in Real Estate \n</item>
+        <item>Limited Power of Attorney to Act by Management and Supervision and Act in Management of Business \n</item>
+        <item>Limited Power of Attorney to Deal in Shares of the Company \n</item>
+    </array>
+
+    <array name="NTypeL"
+       >
+    <item>Limited</item>
+    <item>General</item>
+    </array>
+
+    <array name="NTypeG"
+        id="ntypeG">
+        <item>General Power of Attorney to Act and Manage \n</item>
     </array>
 
 
     <array name="PType">
         <item>Select party type...</item>
-        <item>Client</item>
-        <item>Lawyer</item>
+        <item>Benificiary</item>
+        <item>Witness</item>
         <item>Translator</item>
     </array>
     <array name="idDoc">
@@ -32,7 +51,6 @@
         <item>Driver Lisence</item>
         <item>Passport</item>
         <item>Health Card</item>
-        <item>No</item>
     </array>
 
 

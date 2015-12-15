@@ -61,9 +61,9 @@ public class RegStepThree extends Fragment
 
                     User user = new User(nidCard.getId(), nidCard.getName(), nidCard.getMobile(),
                             nidCard.getAddress(), etUserName.getText().toString(), etPass.getText().toString(),"");
+                    mojManager.addUser(user);
+                    comm.sendUsertoMainActivity(user);
 
-                    comm.StartStepFour(user);
-                    Toast.makeText(getActivity(),"Your Account Added",Toast.LENGTH_LONG).show();
 
 
 

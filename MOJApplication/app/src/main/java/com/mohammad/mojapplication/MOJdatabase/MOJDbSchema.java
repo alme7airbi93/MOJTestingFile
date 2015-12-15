@@ -11,12 +11,13 @@ public class MOJDbSchema {
         public static final class Cols
         {
             public static final String ID = "id";
-            public static final String NAME = "TITLE";
+            public static final String NAME = "name";
             public static final String MOBILE = "mobile";
             public static final String ADDRESS = "address";
             public static final String USER_NAME = "userName";
             public static final String PASS = "password";
             public static final String SERVICEPASS = "servicepass";
+
         }
     }
 
@@ -26,7 +27,7 @@ public class MOJDbSchema {
         public static final class Cols
         {
             public static final String ID = "id";
-            public static final String NAME = "TITLE";
+            public static final String NAME = "name";
             public static final String MOBILE = "mobile";
             public static final String ADDRESS = "address";
             public static final String DOB = "userName";
@@ -47,6 +48,7 @@ public class MOJDbSchema {
             public static final String PARTYID1 = "partyid1";
             public static final String PARTYID2 = "partyid2";
             public static final String LOCATION = "loc";
+            public static final String NOTARY = "notary";
 
         }
     }
@@ -63,6 +65,19 @@ public class MOJDbSchema {
             public static final String MOBILE = "mobile";
             public static final String ADDRESS = "address";
             public static final String IMAGE1 = "image1";
+
+
+        }
+    }
+
+    public static final class NotaryTemplateTable
+    {
+        public static final String NAME = "notarytemplate";
+        public static final class Cols
+        {
+            public static final String NOTARY = "notary";
+            public static final String TYPE = "type";
+
 
 
         }

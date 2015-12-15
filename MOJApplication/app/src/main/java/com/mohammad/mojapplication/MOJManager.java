@@ -11,6 +11,7 @@ import com.mohammad.mojapplication.MOJdatabase.MOJCursorWraper;
 import com.mohammad.mojapplication.MOJdatabase.MOJDbHelper;
 import com.mohammad.mojapplication.MOJdatabase.MOJDbSchema;
 import com.mohammad.mojapplication.Objects.NIDCard;
+import com.mohammad.mojapplication.Objects.NotaryTemlpate;
 import com.mohammad.mojapplication.Objects.Party;
 import com.mohammad.mojapplication.Objects.Service;
 import com.mohammad.mojapplication.Objects.User;
@@ -66,11 +67,12 @@ public class MOJManager {
         ContentValues values = new ContentValues();
         values.put(UserTable.Cols.ID, user.getId());
         values.put(UserTable.Cols.NAME, user.getName());
-        values.put(UserTable.Cols.MOBILE, user.getAddress());
+        values.put(UserTable.Cols.MOBILE, user.getMobile());
         values.put(UserTable.Cols.ADDRESS, user.getAddress());
         values.put(UserTable.Cols.USER_NAME, user.getUserName());
         values.put(UserTable.Cols.PASS, user.getPass());
         values.put(UserTable.Cols.SERVICEPASS, user.getServicePass());
+
 
         return values;
     }
@@ -197,7 +199,10 @@ public class MOJManager {
         values.put(ServiceTable.Cols.SERVICEID, service.getServiceID());
         values.put(ServiceTable.Cols.DATE, service.getDate().getTime());
         values.put(ServiceTable.Cols.SERVICESTATUS, service.getServiceStatus());
+        values.put(ServiceTable.Cols.PARTYID1, service.getPartyID1());
+        values.put(ServiceTable.Cols.PARTYID2, service.getPartyID1());
         values.put(ServiceTable.Cols.LOCATION, service.getServiceStatus());
+        values.put(ServiceTable.Cols.NOTARY, service.getNotary());
 
 
         return values;
@@ -284,7 +289,7 @@ public class MOJManager {
         values.put(PartyTable.Cols.TYPE,party.getType());
         values.put(PartyTable.Cols.MOBILE,party.getMobile());
         values.put(PartyTable.Cols.ADDRESS,party.getAddress());
-        values.put(PartyTable.Cols.IMAGE1,party.getImage1());
+        values.put(PartyTable.Cols.IMAGE1, party.getImage1());
 
 
 
@@ -299,7 +304,7 @@ public class MOJManager {
         database.insert(PartyTable.NAME, null, values);
     }
 
-    public User findpartyById(String  id) {
+    public Party findpartyById(String  id) {
         MOJCursorWraper cursorWraper =
                 querryPartyTable(PartyTable.Cols.PARTYID + " = ?", new String[]{id.toString()});
 
@@ -311,9 +316,54 @@ public class MOJManager {
             }
 
             cursorWraper.moveToFirst();
-            return cursorWraper.getUser();
+            return cursorWraper.getParty();
         }
         finally {
+            cursorWraper.close();
+        }
+
+
+    }
+
+    //-----------------------NotaryDB--------------------------------
+    private MOJCursorWraper querryNotaryTemplateTable(String whereClause, String[] whereArgs) {
+        Cursor cursor = database.query(
+                NotaryTemplateTable.NAME,
+                null,
+                whereClause,
+                whereArgs,
+                null,
+                null,
+                null);
+        return new MOJCursorWraper(cursor);
+
+    }
+
+    private static ContentValues getContentNotary(NotaryTemlpate notaryTemlpate) {
+        ContentValues values = new ContentValues();
+        values.put(NotaryTemplateTable.Cols.NOTARY, notaryTemlpate.getNotary());
+        values.put(NotaryTemplateTable.Cols.TYPE, notaryTemlpate.getType());
+
+        return values;
+    }
+
+    public void addNotaryTemp(NotaryTemlpate notaryTemlpate) {
+        ContentValues values = getContentNotary(notaryTemlpate);
+        database.insert(NotaryTemplateTable.NAME, null, values);
+    }
+
+    public NotaryTemlpate findNotaryTempByType(String type) {
+        MOJCursorWraper cursorWraper =
+                querryNotaryTemplateTable(NotaryTemplateTable.Cols.TYPE + " = ?", new String[]{type.toString()});
+
+        try {
+            if (cursorWraper.getCount() == 0) {
+                return null;
+            }
+
+            cursorWraper.moveToFirst();
+            return cursorWraper.getNotaryTemplate();
+        } finally {
             cursorWraper.close();
         }
 

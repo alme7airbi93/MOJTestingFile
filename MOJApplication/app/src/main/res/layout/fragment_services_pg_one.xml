@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Page 1 of 3"
+        android:text="Page 1 of 4"
         android:id="@+id/tvPage"
          />
     <LinearLayout
@@ -24,7 +24,7 @@
         android:background="@color/black"/>
 
     <LinearLayout
-        android:layout_marginTop="70dp"
+
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,6 +33,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Chose service location:"
             android:id="@+id/textView"
@@ -67,6 +68,8 @@
 </LinearLayout>
 
 
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -93,22 +96,55 @@
                 style="@android:style/Widget.Spinner"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/spDocType"
-                android:entries="@array/NType"
+                android:id="@+id/spNotType"
+                android:entries="@array/NTypeL"
                 android:spinnerMode="dialog" />
-            <TextView
-                android:id="@+id/tvDocTypeStar"
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="*"
-                android:textColor="@color/red"
-                android:textSize="30dp"/>
+
             <ImageView
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/spDocTypeTrue"
+                android:background="@drawable/trueicon"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:layout_marginTop="20dp"
+        android:id="@+id/loSpDocType">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Chose Notary Document: "
+            android:id="@+id/tvNotType"
+            android:textSize="15dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Spinner
+                android:layout_weight="1"
+                style="@android:style/Widget.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/spDocType"
+                android:entries="@array/NTypeG"
+                android:spinnerMode="dialog" />
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ivDocTypeStar"
                 android:background="@drawable/trueicon"/>
         </LinearLayout>
 

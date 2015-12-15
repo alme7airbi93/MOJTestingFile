@@ -30,7 +30,7 @@ public class SplachClass extends AppCompatActivity
 
         Random ran = new Random();
         int rand  = ran.nextInt(5 - 1) +1;
-        Toast.makeText(SplachClass.this, rand + "", Toast.LENGTH_SHORT).show();
+
 
         switch (rand) {
             case 0:
@@ -56,17 +56,17 @@ public class SplachClass extends AppCompatActivity
 
             @Override
             public void run() {
-                // TODO Auto-generated method stub
+
                 Intent i = new Intent(SplachClass.this, RegistrationActivity.class);
                 startActivity(i);
 
 
-                //jeda selesai Splashscreen
+
                 this.finish();
             }
 
             private void finish() {
-                // TODO Auto-generated method stub
+
 
             }
         }, splashInterval);

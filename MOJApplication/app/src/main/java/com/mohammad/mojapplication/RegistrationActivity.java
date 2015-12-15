@@ -155,6 +155,8 @@ public class RegistrationActivity extends AppCompatActivity implements Communica
 
 
 
+
+
     public void stopStepOne() {
         RegStepOne regStepOne = (RegStepOne) manager.findFragmentByTag("FS1");
         FragmentTransaction transaction = manager.beginTransaction();

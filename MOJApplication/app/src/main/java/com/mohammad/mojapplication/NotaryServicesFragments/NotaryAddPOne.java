@@ -10,11 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ import com.mohammad.mojapplication.Objects.Service;
 import com.mohammad.mojapplication.Objects.User;
 import com.mohammad.mojapplication.R;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
@@ -36,7 +39,7 @@ public class NotaryAddPOne extends Fragment {
     private ImageView spLocationTrue,spDocTypeTrue,btnFirstPartyTrue,btnSecondPartyTrue;
     private TextView tvSpLocationStar,tvSpDocTypeStar,tvBtnPartyStar,tvBtnParty2Star;
     private Button btnFirstParty,btnSecondParty,btnNext;
-    private Spinner spLoc, spDocType;
+    private Spinner spLoc, spDocType,spNotType;
     private CommunicatorService communicatorService;
     private MOJManager mojManager;
     private Party party,party2;
@@ -44,6 +47,8 @@ public class NotaryAddPOne extends Fragment {
     private LinearLayout loFirstParty, loSecondParty;
     private NotaryAddPOne notaryAddPOne;
     private boolean isTypeSelected,isLocationSelected = false;
+    private ArrayAdapter<String> spaGen,spaLtd;
+    private String[] spaGenArr, spaLtdArr;
 
 
 
@@ -71,24 +76,55 @@ public class NotaryAddPOne extends Fragment {
         tvBtnParty2Star = (TextView) v.findViewById(R.id.tvBtnAddParty2Star);
         tvBtnPartyStar = (TextView) v.findViewById(R.id.tvBtnAddPartyStar);
         tvSpLocationStar = (TextView) v.findViewById(R.id.tvLocationStar);
-        tvSpDocTypeStar = (TextView) v.findViewById(R.id.tvDocTypeStar);
+
         btnSecondPartyTrue = (ImageView) v.findViewById(R.id.btnAddParty2True);
         btnFirstPartyTrue = (ImageView) v.findViewById(R.id.btnAddPartyTrue);
         spLocationTrue = (ImageView) v.findViewById(R.id.spLocationTrue);
         spDocTypeTrue = (ImageView) v.findViewById(R.id.spDocTypeTrue);
         spLoc = (Spinner) v.findViewById(R.id.spLocation);
         spDocType = (Spinner) v.findViewById(R.id.spDocType);
+        spNotType = (Spinner) v.findViewById(R.id.spNotType);
         btnFirstParty = (Button) v.findViewById(R.id.btnAddParty);
         btnSecondParty = (Button) v.findViewById(R.id.btnAddParty2);
         btnNext = (Button) v.findViewById(R.id.btnServNextFirst);
         loFirstParty = (LinearLayout) v.findViewById(R.id.loFirstParty);
         loSecondParty = (LinearLayout) v.findViewById(R.id.loSecondParty);
+        spaLtdArr = getResources().getStringArray(R.array.NType);
+        spaGenArr = getResources().getStringArray(R.array.NTypeG);
+        spaGen =  new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1,spaGenArr);
+        spaLtd =  new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1,spaLtdArr);
 
-        spDocTypeTrue.setVisibility(View.GONE);
+        spLoc.setSelection(one);
+        spNotType.setSelection(two);
+
+
+
+        if (spNotType.getSelectedItemPosition() == 0) {
+            spDocType.setEnabled(true);
+            spDocType.setAdapter(spaLtd);
+        }
+        else
+        {
+            spDocType.setEnabled(true);
+            spDocType.setAdapter(spaGen);
+        }
+
+
+        spDocType.setEnabled(false);
         spLocationTrue.setVisibility(View.GONE);
         btnFirstPartyTrue.setVisibility(View.GONE);
         btnSecondPartyTrue.setVisibility(View.GONE);
-//        btnNext.setEnabled(false);
+
+        if (party == null) {
+            btnNext.setEnabled(false);
+        }
+        else
+        {
+            btnNext.setEnabled(true);
+        }
+
 
 
         return v;
@@ -171,10 +207,29 @@ public class NotaryAddPOne extends Fragment {
         validator();
 
 
-        spLoc.setSelection(one);
-        spDocType.setSelection(two);
 
 
+        spNotType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+                    spDocType.setEnabled(true);
+                    spDocType.setAdapter(spaLtd);
+                }
+                else
+                {
+                    spDocType.setEnabled(true);
+                    spDocType.setAdapter(spaGen);
+                }
+            }
+
+
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -190,15 +245,16 @@ public class NotaryAddPOne extends Fragment {
 
                     if(party2 != null) {
                         Service service = new Service(user.getId(), spDocType.getSelectedItem().toString(),
-                                randID + "", new Date(), "Pending", party.getPartyID(), party2.getPartyID(), spLoc.getSelectedItem().toString());
+                                randID + "", new Date(), "Pending", party.getPartyID(), party2.getPartyID(),
+                                spLoc.getSelectedItem().toString(),"");
                         communicatorService.sendToStepTwo(service, user, party,party2);
                     }
-                    else
-                    {
-
+                    else {
+                        Log.d("32131231", party.getPartyID());
                         Service service = new Service(user.getId(), spDocType.getSelectedItem().toString(),
-                                randID + "", new Date(), "Pending", party.getPartyID(), "",spLoc.getSelectedItem().toString());
-                        communicatorService.sendToStepTwo(service, user, party,party2);
+                                randID + "", new Date(), "Pending", party.getPartyID(), "",
+                                spLoc.getSelectedItem().toString(), "");
+                        communicatorService.sendToStepTwo(service, user, party, party2);
                     }
 
                 }
@@ -213,14 +269,14 @@ public class NotaryAddPOne extends Fragment {
             @Override
             public void onClick(View v) {
 
-                communicatorService.sendToAdd(spLoc.getSelectedItemPosition(), spDocType.getSelectedItemPosition());
+                communicatorService.sendToAdd(spLoc.getSelectedItemPosition(), spNotType.getSelectedItemPosition());
 
             }
         });
         btnSecondParty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                communicatorService.sendToAddTwo(party, spLoc.getSelectedItemPosition(), spDocType.getSelectedItemPosition());
+                communicatorService.sendToAddTwo(party, spLoc.getSelectedItemPosition(), spNotType.getSelectedItemPosition());
             }
         });
 

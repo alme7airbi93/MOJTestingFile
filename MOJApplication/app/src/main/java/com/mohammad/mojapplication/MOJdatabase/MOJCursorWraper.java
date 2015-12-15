@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 
 
 import com.mohammad.mojapplication.Objects.NIDCard;
+import com.mohammad.mojapplication.Objects.NotaryTemlpate;
 import com.mohammad.mojapplication.Objects.Party;
 import com.mohammad.mojapplication.Objects.Service;
 import com.mohammad.mojapplication.Objects.User;
@@ -73,9 +74,10 @@ public class MOJCursorWraper extends CursorWrapper {
         String partyid1 = getString(getColumnIndex(MOJDbSchema.ServiceTable.Cols.PARTYID1));
         String partyid2 = getString(getColumnIndex(MOJDbSchema.ServiceTable.Cols.PARTYID2));
         String loc = getString(getColumnIndex(MOJDbSchema.ServiceTable.Cols.LOCATION));
+        String notary = getString(getColumnIndex(MOJDbSchema.ServiceTable.Cols.NOTARY));
 
 
-        Service service = new Service(userID, serviceType, serviceID, new Date(date), serviceStatus,partyid1,partyid2,loc);
+        Service service = new Service(userID, serviceType, serviceID, new Date(date), serviceStatus,partyid1,partyid2,loc,notary);
 
 
         return service;
@@ -101,6 +103,21 @@ public class MOJCursorWraper extends CursorWrapper {
 
 
         return party;
+
+    }
+
+    public NotaryTemlpate getNotaryTemplate()
+    {
+        String notaryTemp = getString(getColumnIndex(MOJDbSchema.NotaryTemplateTable.Cols.NOTARY));
+        String nType = getString(getColumnIndex(MOJDbSchema.NotaryTemplateTable.Cols.TYPE));
+
+
+        NotaryTemlpate notaryTemlpate = new NotaryTemlpate(notaryTemp, nType);
+
+
+
+
+        return notaryTemlpate;
 
     }
 }
